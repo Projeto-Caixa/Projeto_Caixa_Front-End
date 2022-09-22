@@ -1,6 +1,6 @@
 export const colors = {
-  primaryColor: "white",
-  primaryColorOpacity: "rgb(255, 255, 255,0.7)",
-  baseBackground: "",
+  primaryColor: "#5ad6fc",
+  primaryColorOpacity: "rgb(168, 232, 251,0.7)",
+  baseBackground: "whitte",
   textColor: "#fff",
 };

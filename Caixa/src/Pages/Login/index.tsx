@@ -6,7 +6,7 @@ const Login = () => {
   return (
     <S.LoginConstainer>
       <LoginCard />
-      {/* <InfoCard /> */}
+      {/* <LoginDefaultCard /> */}
     </S.LoginConstainer>
   );
 };
