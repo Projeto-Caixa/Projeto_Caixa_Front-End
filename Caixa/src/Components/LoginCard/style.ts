@@ -40,6 +40,7 @@ export const LoginText = styled.h1`
   font-size: 6vh;
 `;
 export const FormLogin = styled.form`
+  font-weight: 300;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -80,18 +81,21 @@ export const PasswordText = styled.h1`
 export const ButtonLogin = styled.button`
   ${({ theme }) => css`
     width: 50%;
-    height: 5vh;
+    height: 5.5vh;
     border-radius: 50px;
     margin-top: 15%;
     background-color: ${theme.colors.primaryColor};
-    font-size: 5vh;
+    font-size: 4vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 0;
+    color: white;
     transition: all 0.5s;
 
     :hover {
       transform: scale(1.1);
+      cursor: pointer;
       border: 0;
     }
   `}
