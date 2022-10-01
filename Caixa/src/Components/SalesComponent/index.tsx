@@ -121,11 +121,6 @@ const SalesComponent = () => {
 
   async function addToCart(prod: any) {
     setListProducts([...listProducts, prod]);
-    let convertProducts = listProducts.filter(
-      (index) => index.name === prod.name
-    );
-
-    console.log("900000000000000000000000", convertProducts);
   }
 
   return (
@@ -159,10 +154,13 @@ const SalesComponent = () => {
       </S.Products>
       <S.Infos>
         {listProducts.map<React.ReactNode>((element: any, index: number) => {
-          // console.log("aaaaaaa", element, index);
+          let convertProducts = listProducts.filter(
+            (index) => index.name === element.name
+          );
+
           return (
             <S.CardProductCart key={index}>
-              <S.Amount>x1</S.Amount>
+              <S.Amount>{convertProducts.length}</S.Amount>
               <S.NameProduct>{element.name}</S.NameProduct>
               <S.PriceProduct>{element.price}</S.PriceProduct>
             </S.CardProductCart>

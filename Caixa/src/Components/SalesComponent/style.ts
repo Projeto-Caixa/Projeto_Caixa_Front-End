@@ -19,8 +19,11 @@ export const Products = styled.div`
 `;
 export const Infos = styled.div`
   ${({ theme }) => css`
-    border: 2px solid ${theme.colors.primaryColor};
+    /* border: 2px solid ${theme.colors.primaryColor}; */
+    background-color: #dcdcdc;
+    border-radius: 10px;
     width: 30%;
+    margin: 10px;
   `}
 `;
 
@@ -110,7 +113,7 @@ export const ButtonRemove = styled.button`
 
 export const CardProductCart = styled.div`
   ${({ theme }) => css`
-    border: 1px solid black;
+    border-bottom: 1px solid black;
     display: flex;
     justify-content: space-between;
     #0 {
