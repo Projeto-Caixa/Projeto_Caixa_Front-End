@@ -113,15 +113,32 @@ export const ButtonRemove = styled.button`
 
 export const CardProductCart = styled.div`
   ${({ theme }) => css`
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
     display: flex;
     justify-content: space-between;
-    #0 {
-      background-color: red;
-    }
+    margin: 10px;
+    background-color: white;
+    border-radius: 10px;
+    height: 7%;
+    /* justify-content: center; */
+    align-items: center;
+    font-size: 4vh;
   `}
 `;
 
 export const NameProduct = styled.div``;
-export const PriceProduct = styled.div``;
-export const Amount = styled.div``;
+export const PriceProduct = styled.div`
+  margin-right: 10px;
+`;
+export const Amount = styled.div`
+  margin-left: 10px;
+`;
+
+export const PrintPage = styled.div``;
+
+export const TitleCart = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: 4vh;
+  margin: 10px;
+`;

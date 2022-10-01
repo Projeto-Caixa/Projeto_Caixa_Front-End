@@ -117,7 +117,6 @@ const SalesComponent = () => {
   // }
 
   const [listProducts, setListProducts] = useState<obj[]>([{} as obj]);
-  const [listProductsFilter, setListProductsFilter] = useState([{}]);
 
   async function addToCart(prod: any) {
     setListProducts([...listProducts, prod]);
@@ -153,6 +152,11 @@ const SalesComponent = () => {
         })}
       </S.Products>
       <S.Infos>
+        <S.TitleCart>
+          <span>Qntd</span>
+          <span>Produto</span>
+          <span>Valor R$</span>
+        </S.TitleCart>
         {listProducts.map<React.ReactNode>((element: any, index: number) => {
           let convertProducts = listProducts.filter(
             (index) => index.name === element.name
@@ -160,13 +164,15 @@ const SalesComponent = () => {
 
           return (
             <S.CardProductCart key={index}>
-              <S.Amount>{convertProducts.length}</S.Amount>
+              <S.Amount>x{convertProducts.length}</S.Amount>
               <S.NameProduct>{element.name}</S.NameProduct>
-              <S.PriceProduct>{element.price}</S.PriceProduct>
+              <S.PriceProduct>R${element.price}.00</S.PriceProduct>
             </S.CardProductCart>
           );
         })}
       </S.Infos>
+
+      <S.PrintPage></S.PrintPage>
     </S.Container>
   );
 };
