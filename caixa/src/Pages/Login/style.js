@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import fundo from "../../assets/images/fundoLogin.png";
 
 export const LoginConstainer = styled.div`
   ${({ theme }) => css`

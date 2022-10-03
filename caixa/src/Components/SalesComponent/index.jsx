@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import * as S from "./style";
-import image from "../../assets/products/coca.png";
 import { GrAdd } from "react-icons/gr";
 import { GrFormSubtract } from "react-icons/gr";
 
@@ -104,30 +103,22 @@ const SalesComponent = () => {
     },
   ];
 
-  type obj = {
-    description: string;
-    id: string;
-    img: string;
-    name: string;
-    price: number;
-    product: string;
-  };
   // type sla = {
   //   element: obj
   // }
 
-  const [listProducts, setListProducts] = useState<obj[]>([{} as obj]);
+  const [listProducts, setListProducts] = useState([{}]);
 
   const [cont, setCont] = useState([""]);
 
-  async function addToCart(prod: any) {
-    setListProducts([...listProducts, prod]);
+  async function addToCart() {
+    // setListProducts([...listProducts, prod]);
   }
 
   return (
     <S.Container>
       <S.Products>
-        {list.map<React.ReactNode>((element, index) => {
+        {list.map((element, index) => {
           return (
             <S.ProductContainer key={index}>
               <S.ImageProduct src={element.img} />
@@ -159,22 +150,24 @@ const SalesComponent = () => {
           <span>Produto</span>
           <span>Valor R$</span>
         </S.TitleCart>
-        {listProducts.map<React.ReactNode>((element: any, index: number) => {
-          let convertProducts = listProducts.filter(
-            (index) => index.name === element.name
-          );
-
-          if (element.name != cont) {
-            // setCont([element.name]);
-            return (
-              <S.CardProductCart key={index}>
-                <S.Amount>x{convertProducts.length}</S.Amount>
-                <S.NameProduct>{element.name}</S.NameProduct>
-                <S.PriceProduct>R${element.price}.00</S.PriceProduct>
-              </S.CardProductCart>
+        {listProducts.map <
+          React.ReactNode >
+          ((element, index) => {
+            let convertProducts = listProducts.filter(
+              (index) => index.name === element.name
             );
-          }
-        })}
+
+            if (element.name != cont) {
+              // setCont([element.name]);
+              return (
+                <S.CardProductCart key={index}>
+                  <S.Amount>x{convertProducts.length}</S.Amount>
+                  <S.NameProduct>{element.name}</S.NameProduct>
+                  <S.PriceProduct>R${element.price}.00</S.PriceProduct>
+                </S.CardProductCart>
+              );
+            }
+          })}
       </S.Infos>
 
       <S.PrintPage></S.PrintPage>

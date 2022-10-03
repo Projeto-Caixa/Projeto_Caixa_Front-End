@@ -57,7 +57,6 @@ export const InputLogin = styled.input`
     font-size: large;
     margin: 10px;
     text-indent: 5%;
-
     ::placeholder {
       color: ${theme.colors.primaryColor};
     }
@@ -70,7 +69,6 @@ export const PasswordText = styled.h1`
   font-size: 3vh;
   text-align: left;
   transition: all 0.5s;
-
   :hover {
     transform: scale(1.1);
     border: 0;
@@ -92,7 +90,6 @@ export const ButtonLogin = styled.button`
     border: 0;
     color: white;
     transition: all 0.5s;
-
     :hover {
       transform: scale(1.1);
       cursor: pointer;
