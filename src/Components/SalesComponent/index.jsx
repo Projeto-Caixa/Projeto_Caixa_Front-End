@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as S from "./style";
 import { GrAdd } from "react-icons/gr";
 import { GrFormSubtract } from "react-icons/gr";
@@ -124,6 +124,7 @@ const SalesComponent = () => {
   const [cont, setCont] = useState([""]);
   const [quantity, setQuantity] = useState(0);
 
+  useEffect(() => {}, [listProducts]);
   function addToCart(prod) {
     // if (listProducts.length) {
     //   const exists = listProducts.find((item) => item.name == prod.name);
@@ -140,15 +141,31 @@ const SalesComponent = () => {
 
     // const exists = listProducts.find((item) => item.name == prod.name);
 
-    setListProducts([...listProducts, prod]);
+    let verifica = listProducts.filter((element) => element.name == prod.name);
 
-    listProducts.map((e) => {
-      if (e.name === prod.name) {
-        prod.quant++;
-      }
-    });
+    // console.log(verifica);
+
+    // console.log(control);
+    if (verifica.length === 0) {
+      setListProducts([...listProducts, prod]);
+      console.log("Esta no if");
+    } else
+      listProducts.map((i) => {
+        if (i.name === prod.name) {
+          // console.log(i.quant);
+          setListProducts([...listProducts, (prod.quant += i.quant)]);
+          // i.quant++;
+        }
+      });
+    // let control = listProducts.map((index) => {
+    //   if (index.name === prod.name) {
+    //     return prod.quant++;
+    //   }
+    // });
   }
+  // console.log(control);
 
+  console.log("depois", listProducts);
   let g = ["1", "2"];
 
   return (
@@ -205,9 +222,9 @@ const SalesComponent = () => {
         </S.CloseSale>
       </S.Details>
       <div className="print" id="printable">
-        {g.map(() => {
+        {g.map((E, index) => {
           return (
-            <>
+            <div key={index}>
               <S.Break />
               <div className="container">
                 <div className="line1">
@@ -227,7 +244,7 @@ const SalesComponent = () => {
               <h2 className="loc">Paróquia Santo Antonio</h2>
               {/* <div style="page-break-after: always"></div> */}
               {/* <div style={{ pageBreakAfter: "always" }}></div> */}
-            </>
+            </div>
           );
         })}
       </div>
