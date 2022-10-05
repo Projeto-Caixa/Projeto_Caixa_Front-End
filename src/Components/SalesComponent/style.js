@@ -1,14 +1,84 @@
-import styled, { css } from "styled-components";
+import styled, { css, createGlobalStyle } from "styled-components";
+
+// createGlobalStyle`
+//   html {
+//     height: 100%;
+//     width: 100%;
+//   }
+// `;
 
 export const Container = styled.main`
   ${({ theme }) => css`
-    font-family: "minimal";
-    color: black
-    /* min-height: 100vh; */
-    width: 98vw;
-    display: flex;
-  `}
+  font-family: "minimal";
+  color: black
+  /* min-height: 100vh; */
+  width: 98vw;
+  display: flex;
+  
+  .print{
+    display: none;
+    /* height: 30%; */
+    width: 100mm;
+    /* margin: 0px 20px 20px 20px; */
+    .loc{
+      margin-top: 40px;
+    }
+    .container{
+      border-radius: 10px;
+      border: 1px solid black;
+    }
+    h1, h2{
+      margin: 0;
+      text-align: center;
+
+    }
+
+    .line1{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-bottom: 1px solid black;
+      img{
+        height: 100px;
+      }
+    }
+    .line2{
+      border-bottom: 1px solid black;
+      text-align: center;
+      margin: 10px;
+    }
+    .line3{
+      div{
+        display: flex;
+        justify-content: space-around;
+      }
+      h2{
+        text-align: center;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  @media print {
+    .Products, .Infos, .CloseSale{
+      visibility: hidden;
+    }
+    .print {
+      display: block;
+    }
+  #printable,
+  #printable * {
+    visibility: visible;
+  }
+  #printable {
+    position: fixed;
+    left: 15px;
+    top: 0;
+  }
+}
+`}
 `;
+
 export const Products = styled.div`
   /* border: 2px solid blue; */
   width: 70%;
@@ -17,14 +87,46 @@ export const Products = styled.div`
   align-items: center;
   flex-wrap: wrap;
 `;
+
+export const Details = styled.div`
+  width: 28%;
+  height: 70%;
+`;
+
 export const Infos = styled.div`
   ${({ theme }) => css`
     /* border: 2px solid ${theme.colors.primaryColor}; */
     background-color: #dcdcdc;
     border-radius: 10px;
-    width: 30%;
+    width: 100%;
+    height: 80vh;
     margin: 10px;
   `}
+`;
+
+export const CloseSale = styled.div`
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  justify-content: space-around;
+  margin-left: 10px;
+  font-size: 4vh;
+`;
+
+export const RemoveSale = styled.div`
+  border: 1px solid green;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Close = styled.div`
+  border: 1px solid red;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ProductContainer = styled.div`
@@ -119,7 +221,7 @@ export const CardProductCart = styled.div`
     margin: 10px;
     background-color: white;
     border-radius: 10px;
-    height: 7%;
+    height: 30px;
     /* justify-content: center; */
     align-items: center;
     font-size: 4vh;
@@ -134,11 +236,21 @@ export const Amount = styled.div`
   margin-left: 10px;
 `;
 
-export const PrintPage = styled.div``;
+export const PrintPage = styled.div`
+  border: 1px solid black;
+  border-radius: 30px;
+  height: 100%;
+  width: 8cm;
+  display: none;
+`;
 
 export const TitleCart = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 4vh;
   margin: 10px;
+`;
+
+export const Break = styled.div`
+  page-break-inside: always;
 `;
