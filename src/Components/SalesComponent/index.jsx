@@ -18,7 +18,6 @@ const SalesComponent = () => {
   const renderProducts = async () => {
     const response = await ProductsService.Get();
     setList(response.data);
-    console.log("demonho", list);
   };
 
   useEffect(() => {

@@ -4,11 +4,11 @@ import * as S from "./style";
 
 const ReportGlobal = () => {
   const [list, setList] = useState([[]]);
+  const [product, setProduct] = useState([{}]);
 
   const renderLog = async () => {
     const response = await ReportService.Get();
-    setList(response.data);
-    console.log("demonho", list);
+    setList([response.data]);
   };
 
   useEffect(() => {
@@ -27,13 +27,14 @@ const ReportGlobal = () => {
         <div>Valor</div>
       </S.Infos>
       <S.Products>
-        {list.map((element) => {
+        {list[0].map((element, index) => {
+          let disconvert = JSON.parse(element.list);
           return (
-            <div className="products">
+            <div key={index} className="products">
               <S.ProductsContainer>
-                <span>{element.idProduto}</span>
-                <span>{element.quantidade}</span>
-                <span>{element.preco * element.quantidade}</span>
+                <span>{disconvert.name}</span>
+                <span>{disconvert.quantity}</span>
+                <span>{disconvert.price * disconvert.quantity}</span>
               </S.ProductsContainer>
             </div>
           );
