@@ -261,55 +261,48 @@ const SalesComponent = () => {
       </S.Details>
       <div className="print" id="printable">
         {g.map((item, index) => {
-          // return (
-          //   <div key={index}>
-          //     <S.Break />
-          //     <div className="container">
-          //       <div className="line1">
-          //         <img src="https://cdn-icons-png.flaticon.com/512/108/108219.png" />
-          //         <h1>Lata de refrigerante</h1>
-          //       </div>
-          //       <div className="line2">
-          //         <h1>R$ 5.00</h1>
-          //       </div>
-          //       <div className="line3">
-          //         <div>
-          //           <h2>05/10</h2>
-          //           <h2>Imbituva-PR</h2>
-          //         </div>
-          //       </div>
-          //     </div>
-          //     <h2 className="loc">Paróquia Santo Antonio</h2>
-          //     {/* <div style="page-break-after: always"></div> */}
-          //     {/* <div style={{ pageBreakAfter: "always" }}></div> */}
-          //   </div>
-          // );
-
-          let itens = [];
-          if (item.quant > 1) {
-            console.log(
-              "ec00000000000000000000000000000000000000000000000000000000o"
-            );
-            for (let index = 1; index <= item.quantidade; index++) {
-              itens.push(
-                // <div className="pagina">
-                //   <div className="barraquinha">Festa</div>
-                //   <div className="titulo">{item.nome.toUpperCase()}</div>
-                //   <div className="preco">
-                //     R$ {item.valor.toFixed(2).replace(".", ",")}
-                //   </div>
-                //   <div className="descricao">Paróquia Santo Antônio</div>
-                //   <div className="descricao">Imbituva - Pr</div>
-                //   <div className="hora">
-                //     {/* {moment().format("DD/MM/YYYY HH:mm:ss ")} */}
-                //   </div>
-                // </div>
-                <h1 className="print" id="printable">
-                  Go
-                </h1>
-              );
-            }
-          }
+          return (
+            <div key={index}>
+              <S.Break />
+              <div className="container">
+                <div className="line1">
+                  <img src="https://cdn-icons-png.flaticon.com/512/108/108219.png" />
+                  <h1>Lata de refrigerante</h1>
+                </div>
+                <div className="line2">
+                  <h1>R$ 5.00</h1>
+                </div>
+                <div className="line3">
+                  <div>
+                    <h2>05/10</h2>
+                    <h2>Imbituva-PR</h2>
+                  </div>
+                </div>
+              </div>
+              <h2 className="loc">Paróquia Santo Antonio</h2>
+              {/* <div style="page-break-after: always"></div> */}
+              <div style={{ pageBreakAfter: "always" }}></div>
+            </div>
+            // );
+            // let itens = [];
+            // if (item.quant > 1) {
+            //   for (let index = 1; index <= item.quantidade; index++) {
+            //     itens.push(
+            //       <div className="pagina">
+            //         <div className="barraquinha">Festa</div>
+            //         <div className="titulo">{item.nome.toUpperCase()}</div>
+            //         <div className="preco">
+            //           R$ {item.valor.toFixed(2).replace(".", ",")}
+            //         </div>
+            //         <div className="descricao">Paróquia Santo Antônio</div>
+            //         <div className="descricao">Imbituva - Pr</div>
+            //         <div className="hora">
+            //           {/* {moment().format("DD/MM/YYYY HH:mm:ss ")} */}
+            //         </div>
+            //       </div>
+            //     );
+            //   }
+          ); // }
         })}
       </div>
     </S.Container>
