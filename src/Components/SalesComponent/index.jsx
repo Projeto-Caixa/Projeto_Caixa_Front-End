@@ -15,10 +15,6 @@ const SalesComponent = () => {
 
   const navegate = useNavigate();
 
-  useEffect(() => {
-    setListProducts([...listProducts]);
-  }, []);
-
   const renderProducts = async () => {
     const response = await ProductsService.Get();
     setList(response.data);
@@ -38,7 +34,9 @@ const SalesComponent = () => {
     let user = localStorage.getItem("IdUser");
     console.log(user);
 
-    const response = await SaleService.Sale(user, jsonList);
+    let enviar = { idVendedor: user, list: [jsonList] };
+
+    const response = await SaleService.Sale(enviar);
 
     if (!response) {
       Swal.fire({
@@ -50,8 +48,8 @@ const SalesComponent = () => {
       });
     }
 
-    // window.print();
-    // setListProducts([]);
+    window.print();
+    setListProducts([]);
   };
 
   function addToCart(prod) {
