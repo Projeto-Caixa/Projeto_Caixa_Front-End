@@ -28,13 +28,13 @@ const SalesComponent = () => {
   const handleSale = async (e) => {
     e.preventDefault();
 
-    let jsonList = JSON.stringify(listProducts[1]);
+    let jsonList = JSON.stringify(listProducts);
     // console.log(listProducts);
     // console.log(jsonList);
     let user = localStorage.getItem("IdUser");
     console.log(user);
 
-    let enviar = { idVendedor: user, list: [jsonList] };
+    let enviar = { idVendedor: user, list: [jsonList.shift()] };
 
     const response = await SaleService.Sale(enviar);
 
