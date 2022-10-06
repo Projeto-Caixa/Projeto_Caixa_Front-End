@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import HomeComponent from "../../Components/HomeComponent";
+import ReportPrint from "../../Components/ReportPrint";
 
-const Home = () => {
+const ReportPage = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -11,11 +11,7 @@ const Home = () => {
     }
   });
 
-  return (
-    <>
-      <HomeComponent />
-    </>
-  );
+  return <ReportPrint />;
 };
 
-export default Home;
+export default ReportPage;
