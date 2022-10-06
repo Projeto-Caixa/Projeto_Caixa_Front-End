@@ -114,19 +114,31 @@ export const CloseSale = styled.div`
 `;
 
 export const RemoveSale = styled.div`
-  border: 1px solid green;
+  background-color: #00a000;
   width: 70%;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 30px;
+  transition: all 0.5s;
+  :hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
 `;
 
 export const Close = styled.div`
-  border: 1px solid red;
+  background-color: red;
   width: 20%;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.5s;
+  border-radius: 30px;
+  :hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
 `;
 
 export const ProductContainer = styled.div`

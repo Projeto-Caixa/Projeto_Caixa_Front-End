@@ -9,10 +9,10 @@ export const LoginConstainer = styled.div`
     font-family: "Minimal";
     padding: 0;
     margin: 0;
-    width: 100vw;
+    width: 98vw;
     height: 100vh;
     display: flex;
-    /* overflow: hidden; */
+    overflow: hidden;
     justify-content: center;
     align-items: center;
     background-color: white;

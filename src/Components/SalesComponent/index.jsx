@@ -149,14 +149,14 @@ const SalesComponent = () => {
     if (verifica.length === 0) {
       setListProducts([...listProducts, prod]);
       console.log("Esta no if");
-    } else
+    } else if (verifica.length != 0) {
       listProducts.map((i) => {
         if (i.name === prod.name) {
           // console.log(i.quant);
-          setListProducts([...listProducts, (prod.quant += i.quant)]);
           // i.quant++;
         }
       });
+    }
     // let control = listProducts.map((index) => {
     //   if (index.name === prod.name) {
     //     return prod.quant++;
@@ -166,7 +166,17 @@ const SalesComponent = () => {
   // console.log(control);
 
   console.log("depois", listProducts);
+
   let g = ["1", "2"];
+
+  let handlePrintPage = () => {
+    window.print();
+    setListProducts([]);
+  };
+
+  let handleRemoveComp = () => {
+    setListProducts([]);
+  };
 
   return (
     <S.Container className="teste">
@@ -215,10 +225,10 @@ const SalesComponent = () => {
           })}
         </S.Infos>
         <S.CloseSale className="CloseSale">
-          <S.RemoveSale>Finalizar Venda</S.RemoveSale>
-          <S.Close>
+          <S.Close onClick={handleRemoveComp}>
             <BiTrashAlt />
           </S.Close>
+          <S.RemoveSale onClick={handlePrintPage}>Finalizar Venda</S.RemoveSale>
         </S.CloseSale>
       </S.Details>
       <div className="print" id="printable">
