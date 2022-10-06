@@ -4,12 +4,16 @@ import { GrAdd } from "react-icons/gr";
 import { GrFormSubtract } from "react-icons/gr";
 import { BiTrashAlt } from "react-icons/bi";
 import { ProductsService, SaleService } from "../../Services/productsService";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const SalesComponent = () => {
   const [listProducts, setListProducts] = useState([{}]);
   const [cont, setCont] = useState([""]);
   const [quantity, setQuantity] = useState(0);
   const [list, setList] = useState([{}]);
+
+  const navegate = useNavigate();
 
   useEffect(() => {
     setListProducts([...listProducts]);
@@ -28,10 +32,13 @@ const SalesComponent = () => {
   const handleSale = async (e) => {
     e.preventDefault();
 
-    const response = await SaleService.Sale(
-      localStorage.getItem("IdUser"),
-      listProducts
-    );
+    let jsonList = JSON.stringify(listProducts[1]);
+    // console.log(listProducts);
+    // console.log(jsonList);
+    let user = localStorage.getItem("IdUser");
+    console.log(user);
+
+    const response = await SaleService.Sale(user, jsonList);
 
     if (!response) {
       Swal.fire({
@@ -43,21 +50,8 @@ const SalesComponent = () => {
       });
     }
 
-    const jwt = response.data.token;
-    const idUser = response.data.user.id;
-
-    if (jwt) {
-      localStorage.setItem("jwt", jwt);
-      localStorage.setItem("IdUser", idUser);
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Logado com sucesso!",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      navegate("/produtos");
-    }
+    // window.print();
+    // setListProducts([]);
   };
 
   function addToCart(prod) {
@@ -101,11 +95,6 @@ const SalesComponent = () => {
       quant: 3,
     },
   ];
-
-  let handlePrintPage = () => {
-    window.print();
-    setListProducts([]);
-  };
 
   let handleRemoveComp = () => {
     setListProducts([]);
@@ -164,7 +153,7 @@ const SalesComponent = () => {
           <S.Close onClick={handleRemoveComp}>
             <BiTrashAlt />
           </S.Close>
-          <S.RemoveSale onClick={handlePrintPage}>Finalizar Venda</S.RemoveSale>
+          <S.RemoveSale onClick={handleSale}>Finalizar Venda</S.RemoveSale>
         </S.CloseSale>
       </S.Details>
       <div className="print" id="printable">

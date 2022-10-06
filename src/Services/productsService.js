@@ -18,9 +18,9 @@ export const ProductsService = {
 };
 
 export const SaleService = {
-  Sale: async (values) => {
+  Sale: async (idVend, list) => {
     try {
-      const res = await Api.post("/venda", values);
+      const res = await Api.post("/venda", idVend, list);
       return res;
     } catch (error) {
       swal({
