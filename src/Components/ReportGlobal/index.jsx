@@ -4,7 +4,6 @@ import * as S from "./style";
 
 const ReportGlobal = () => {
   const [list, setList] = useState([[]]);
-  const [product, setProduct] = useState([{}]);
 
   const renderLog = async () => {
     const response = await ReportService.Get();
