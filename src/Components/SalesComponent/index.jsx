@@ -13,7 +13,7 @@ const SalesComponent = () => {
   const [quantity, setQuantity] = useState(0);
   const [list, setList] = useState([{}]);
 
-  const navegate = useNavigate();
+  // const navegate = useNavigate();
 
   const renderProducts = async () => {
     const response = await ProductsService.Get();
@@ -23,6 +23,7 @@ const SalesComponent = () => {
 
   useEffect(() => {
     renderProducts();
+    setList([]);
   }, []);
 
   const handleSale = async (e) => {
@@ -101,34 +102,31 @@ const SalesComponent = () => {
   return (
     <S.Container className="teste">
       <S.Products className="Products">
-        {typeof list !== "undefined"
-          ? list.map((element, index) => {
-              // console.log("💟", element);
-              return (
-                <S.ProductContainer key={index}>
-                  <S.ImageProduct src={element.image} />
-                  <S.ProductCard>
-                    <S.InfoProduct>
-                      <S.TiTle> {element.nameabv} </S.TiTle>
-                      <S.Price> R$ {element.price} </S.Price>
-                    </S.InfoProduct>
-                    <S.LineButtons>
-                      <S.ButtonAdd
-                        onClick={() => {
-                          addToCart(element);
-                        }}
-                      >
-                        <GrAdd />
-                      </S.ButtonAdd>
-                      <S.ButtonRemove>
-                        <GrFormSubtract />
-                      </S.ButtonRemove>
-                    </S.LineButtons>
-                  </S.ProductCard>
-                </S.ProductContainer>
-              );
-            })
-          : console.log("💛🧡🧡❤💚💙💞💓💓")}
+        {list.map((element, index) => {
+          return (
+            <S.ProductContainer key={index}>
+              <S.ImageProduct src={element.image} />
+              <S.ProductCard>
+                <S.InfoProduct>
+                  <S.TiTle> {element.nameabv} </S.TiTle>
+                  <S.Price> R$ {element.price} </S.Price>
+                </S.InfoProduct>
+                <S.LineButtons>
+                  <S.ButtonAdd
+                    onClick={() => {
+                      addToCart(element);
+                    }}
+                  >
+                    <GrAdd />
+                  </S.ButtonAdd>
+                  <S.ButtonRemove>
+                    <GrFormSubtract />
+                  </S.ButtonRemove>
+                </S.LineButtons>
+              </S.ProductCard>
+            </S.ProductContainer>
+          );
+        })}
       </S.Products>
       <S.Details>
         <S.Infos className="Infos">
