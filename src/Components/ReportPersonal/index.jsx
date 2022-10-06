@@ -1,39 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { ReportService } from "../../Services/reportService";
 import * as S from "./style";
 
 const ReportPersonal = () => {
-  let list = [
-    {
-      name: "refrigerante",
-      quant: 107,
-      value: 5,
-    },
-    {
-      name: "Pastel",
-      quant: 389,
-      value: 5,
-    },
-    {
-      name: "Cerveja",
-      quant: 356,
-      value: 5,
-    },
-    {
-      name: "Bolo",
-      quant: 107,
-      value: 312,
-    },
-    {
-      name: "Sonho",
-      quant: 78,
-      value: 5,
-    },
-    {
-      name: "Agua",
-      quant: 34,
-      value: 2,
-    },
-  ];
+  const [list, setList] = useState([{}]);
+
+  const renderLog = async () => {
+    const response = await ReportService.Get();
+    setList(response.data);
+    console.log(list);
+  };
+
+  useEffect(() => {
+    renderLog();
+  }, []);
+
   return (
     <S.Container>
       <S.Title>
@@ -47,15 +28,19 @@ const ReportPersonal = () => {
       </S.Infos>
       <S.Products>
         {list.map((element) => {
-          return (
-            <div className="products">
-              <S.ProductsContainer>
-                <span>{element.name}</span>
-                <span>{element.quant}</span>
-                <span>{element.value * element.quant}</span>
-              </S.ProductsContainer>
-            </div>
-          );
+          if (element.idVendedor === localStorage.getItem("IdUser")) {
+            return (
+              <>
+                <div className="products">
+                  <S.ProductsContainer>
+                    <span>{element.idProduto}</span>
+                    <span>{element.quantidade}</span>
+                    <span>{element.preco * element.quantidade}</span>
+                  </S.ProductsContainer>
+                </div>
+              </>
+            );
+          }
         })}
       </S.Products>
       <S.Dice>
@@ -66,6 +51,7 @@ const ReportPersonal = () => {
           <span>05/10/2022</span>
         </span>
       </S.Dice>
+      ;
     </S.Container>
   );
 };
