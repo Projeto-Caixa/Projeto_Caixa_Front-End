@@ -1,10 +1,30 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   margin: 0;
   width: 68mm;
   border: 1px solid black;
   border-radius: 10px;
+`;
+export const Div = styled.div`
+  @media print {
+    .hiden-button {
+      visibility: hidden;
+    }
+
+    .print {
+      display: block;
+    }
+    #printable,
+    #printable * {
+      visibility: visible;
+    }
+    #printable {
+      position: fixed;
+      left: 15px;
+      top: 0;
+    }
+  }
 `;
 
 export const Title = styled.h1`
