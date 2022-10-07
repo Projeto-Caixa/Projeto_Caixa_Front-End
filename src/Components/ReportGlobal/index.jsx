@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { ReportService } from '../../Services/reportService';
-import * as S from './style';
+import React, { useEffect, useState } from "react";
+import { ReportService } from "../../Services/reportService";
+import { ProductCard } from "../SalesComponent/style";
+import * as S from "./style";
 
 const ReportGlobal = () => {
   const [listSales, setListSales] = useState();
@@ -29,7 +30,7 @@ const ReportGlobal = () => {
         // listaVendidos.push(element);
         let filtro = listaVendidos.filter((r) => r.nameabv === element.nameabv);
         if (!filtro.length) {
-          console.log('filtro e esse', filtro);
+          console.log("filtro e esse", filtro);
           listaVendidos.push(element);
         } else if (filtro.length != 0) {
           let position = listaVendidos.findIndex(
@@ -37,10 +38,11 @@ const ReportGlobal = () => {
           );
 
           let newListValue = listaVendidos;
-          console.log('new list value', newListValue);
-          newListValue[position].quantity = newListValue[position].quantity++;
-          listaVendidos = newListValue;
-          console.log('🐲', listaVendidos);
+          console.log("new list value", newListValue);
+          newListValue[position].quantity =
+            newListValue[position].quantity + element.quantity;
+          listaVendidos.push(newListValue);
+          console.log("🐲", listaVendidos);
           // let isso = newListValue[position].quantity + element.quantity;
           // console.log('lista vendidos', listaVendidos[position].quantity);
           // console.log('lista isso', isso);
@@ -55,7 +57,7 @@ const ReportGlobal = () => {
       if (listaVendidos != undefined) {
         setVendidos(listaVendidos);
         // console.log(vendidos, 'state');
-      } else console.log('f');
+      } else console.log("f");
     });
   };
 
@@ -84,7 +86,7 @@ const ReportGlobal = () => {
                   </div>
                 );
               })
-            : console.log('f')}
+            : console.log("f")}
         </S.Products>
         <S.Dice>
           <div>Emitente: Mauricio</div>
