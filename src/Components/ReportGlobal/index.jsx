@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ReportService } from "../../Services/reportService";
 import { UserService } from "../../Services/userService";
 import { ProductCard } from "../SalesComponent/style";
@@ -8,6 +9,8 @@ const ReportGlobal = () => {
   const [listSales, setListSales] = useState();
   const [vendidos, setVendidos] = useState();
   const [total, setTotal] = useState(0);
+
+  const navigate = useNavigate();
 
   const renderLog = async () => {
     const response = await ReportService.Get();
@@ -120,10 +123,25 @@ const ReportGlobal = () => {
           </span>
         </S.Dice>
       </S.Container>
-
-      <button className="hiden-button" type="button" onClick={() => talvez()}>
-        Gerar Relatorio
-      </button>
+      <div id="buttons">
+        <button className="hiden-button" type="button" onClick={() => talvez()}>
+          Gerar Relatorio
+        </button>
+        <button
+          className="hiden-button"
+          type="button"
+          onClick={() => window.print()}
+        >
+          Imprimir
+        </button>
+        <button
+          className="hiden-button"
+          type="button"
+          onClick={() => navigate("/relatorio")}
+        >
+          Voltar
+        </button>
+      </div>
     </S.Div>
   );
 };

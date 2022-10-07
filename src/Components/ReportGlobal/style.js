@@ -25,6 +25,18 @@ export const Div = styled.div`
       top: 0;
     }
   }
+
+  #buttons {
+    display: flex;
+    justify-content: left;
+    margin: 10px 0px;
+    button {
+      margin: 0px 5px;
+      :hover {
+        cursor: pointer;
+      }
+    }
+  }
 `;
 
 export const Title = styled.h1`
