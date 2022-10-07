@@ -6,6 +6,26 @@ export const Container = styled.div`
   border: 1px solid black;
   border-radius: 10px;
 `;
+export const Div = styled.div`
+  @media print {
+    .hiden-button {
+      visibility: hidden;
+    }
+
+    .print {
+      display: block;
+    }
+    #printable,
+    #printable * {
+      visibility: visible;
+    }
+    #printable {
+      position: fixed;
+      left: 15px;
+      top: 0;
+    }
+  }
+`;
 
 export const Title = styled.h1`
   margin: 0;
