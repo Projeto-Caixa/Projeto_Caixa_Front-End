@@ -4,6 +4,7 @@ import * as S from "./style";
 
 const ReportGlobal = () => {
   const [listSales, setListSales] = useState();
+  const [teste, setTeste] = useState([]);
 
   const renderLog = async () => {
     const response = await ReportService.Get();
@@ -13,10 +14,31 @@ const ReportGlobal = () => {
 
   useEffect(() => {
     renderLog();
+    // talvez();
   }, []);
+
+  let talvez = () => {
+    // listSales.map((desgraca) => {
+    //   let render = JSON.parse(desgraca.list);
+    //   let filtra = teste.filter((e) => e.name == render.name);
+    //   if (!filtra.lenght) {
+    //     if (render.length > 1) {
+    //       render.map((desgraca2) => {
+    //         setTeste(...teste, desgraca2);
+    //       });
+    //     }
+    //     setTeste(...teste, desgraca);
+    //   }
+    // });
+  };
+
+  // talvez();
 
   return (
     <S.Container>
+      <button type="button" onClick={() => talvez()}>
+        poa
+      </button>
       <S.Title>
         RELATORIO
         <br /> GERAL
@@ -33,16 +55,16 @@ const ReportGlobal = () => {
 
               // console.log(index, "☮🕳🕳☮✝✝☪☪🕉🕉♈🛐🛐", disconvert);
 
-              return disconvert.map((index) => {
+              return disconvert.map((i, index) => {
                 // console.log("qqqqqqqqqqqqqqqqqqqq");
                 // console.log(index.name);
 
                 return (
                   <div key={index} className="products">
                     <S.ProductsContainer>
-                      <span>{index.name}</span>
-                      <span>{index.quantity}</span>
-                      <span>{index.price * index.quantity}</span>
+                      <span>{i.name}</span>
+                      <span>{i.quantity}</span>
+                      <span>{i.price * i.quantity}</span>
                     </S.ProductsContainer>
                   </div>
                 );
