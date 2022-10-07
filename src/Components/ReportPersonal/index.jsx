@@ -16,6 +16,8 @@ const ReportGlobal = () => {
   };
   let listaVendidos = [];
 
+  let totalList = [];
+
   useEffect(() => {
     renderLog();
 
@@ -83,6 +85,8 @@ const ReportGlobal = () => {
           {vendidos
             ? vendidos.map((element, index) => {
                 if (element.nameabv) {
+                  let soma = element.price * element.quantity;
+                  totalList = +totalList + +soma;
                   return (
                     <div key={index} className="products">
                       <S.ProductsContainer>
@@ -97,6 +101,7 @@ const ReportGlobal = () => {
             : console.log("f")}
         </S.Products>
         <S.Dice>
+          <S.Total>TOTAL: R${totalList}</S.Total>
           <div>Emitente: Mauricio</div>
           <h1>Ass:</h1>
           <span>

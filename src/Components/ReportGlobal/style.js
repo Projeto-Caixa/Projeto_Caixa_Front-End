@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   margin: 0;
@@ -21,7 +21,7 @@ export const Div = styled.div`
     }
     #printable {
       position: fixed;
-      left: 15px;
+      left: 6px;
       top: 0;
     }
   }
@@ -40,6 +40,9 @@ export const Infos = styled.div`
   margin: 0px 10px 0px 10px;
   font-size: 20px;
   border-bottom: 1px solid black;
+  #Value {
+    margin-right: 15px;
+  }
 `;
 
 export const Products = styled.div`
@@ -57,8 +60,16 @@ export const ProductsContainer = styled.div`
   font-size: 16px;
 
   span {
-    width: 33%;
-    text-align: center;
+    width: 50%;
+    text-align: left;
+    margin-left: 10px;
+  }
+  #number {
+    margin-left: 50px;
+  }
+  #totalPrice {
+    /* margin-left: 20px; */
+    /* padding-left: 10px; */
   }
 `;
 
@@ -79,4 +90,9 @@ export const Dice = styled.div`
     display: flex;
     justify-content: space-around;
   }
+`;
+
+export const Total = styled.div`
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
 `;

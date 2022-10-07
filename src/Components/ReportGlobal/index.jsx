@@ -1,22 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { ReportService } from "../../Services/reportService";
+import { UserService } from "../../Services/userService";
 import { ProductCard } from "../SalesComponent/style";
 import * as S from "./style";
 
 const ReportGlobal = () => {
   const [listSales, setListSales] = useState();
   const [vendidos, setVendidos] = useState();
-  const [newis, setnewis] = useState();
+  const [total, setTotal] = useState(0);
 
   const renderLog = async () => {
     const response = await ReportService.Get();
     setListSales(response.data);
     // console.log(listSales);
   };
+  const renderUser = async () => {
+    let id = localStorage.getItem("IdUser");
+    // console.log("id", id);
+    const response = await UserService.Get(id);
+    console.log("res", response);
+    // console.log(listSales);
+  };
+
   let listaVendidos = [];
+  let totalList = [];
 
   useEffect(() => {
     renderLog();
+    // renderUser();
 
     // talvez();
   }, []);
@@ -71,18 +82,27 @@ const ReportGlobal = () => {
         <S.Infos>
           <div>Prod</div>
           <div>Quant</div>
-          <div>Valor</div>
+          <div id="Value">Valor</div>
         </S.Infos>
         <S.Products>
           {vendidos
             ? vendidos.map((element, index) => {
+                // let soma = element.price * element.quantity;
+                // setTotal(element.price);
+
                 if (element.nameabv) {
+                  let soma = element.price * element.quantity;
+                  totalList = +totalList + +soma;
+
+                  console.log("totalList");
                   return (
                     <div key={index} className="products">
                       <S.ProductsContainer>
                         <span>{element.nameabv}</span>
-                        <span>{element.quantity}</span>
-                        <span>{element.price * element.quantity}</span>
+                        <span id="number">{element.quantity}</span>
+                        <span id="totalPrice">
+                          R${element.price * element.quantity}
+                        </span>
                       </S.ProductsContainer>
                     </div>
                   );
@@ -91,6 +111,7 @@ const ReportGlobal = () => {
             : console.log("f")}
         </S.Products>
         <S.Dice>
+          <S.Total>TOTAL: R${totalList}</S.Total>
           <div>Emitente: Mauricio</div>
           <h1>Ass:</h1>
           <span>

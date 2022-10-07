@@ -80,3 +80,8 @@ export const Dice = styled.div`
     justify-content: space-around;
   }
 `;
+
+export const Total = styled.div`
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+`;
