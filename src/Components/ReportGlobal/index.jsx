@@ -5,6 +5,7 @@ import * as S from './style';
 const ReportGlobal = () => {
   const [listSales, setListSales] = useState();
   const [vendidos, setVendidos] = useState();
+  const [newis, setnewis] = useState();
 
   const renderLog = async () => {
     const response = await ReportService.Get();
@@ -22,26 +23,39 @@ const ReportGlobal = () => {
   let talvez = () => {
     listSales.map((desgraca) => {
       let render = JSON.parse(desgraca.list);
-      // console.log('esse e o render', render);
+
       render.map((element) => {
         console.log(element.name, element.quantity);
-        listaVendidos.push(element);
-        // setVendidos([...vendidos, element]);
-        console.log('esse e o teste', listaVendidos);
+        // listaVendidos.push(element);
+        let filtro = listaVendidos.filter((r) => r.nameabv === element.nameabv);
+        if (!filtro.length) {
+          console.log('filtro e esse', filtro);
+          listaVendidos.push(element);
+        } else if (filtro.length != 0) {
+          let position = listaVendidos.findIndex(
+            (t) => t.nameabv === element.nameabv
+          );
+
+          let newListValue = listaVendidos;
+          console.log('new list value', newListValue);
+          newListValue[position].quantity = newListValue[position].quantity++;
+          listaVendidos = newListValue;
+          console.log('🐲', listaVendidos);
+          // let isso = newListValue[position].quantity + element.quantity;
+          // console.log('lista vendidos', listaVendidos[position].quantity);
+          // console.log('lista isso', isso);
+          // console.log(element.quantity);
+
+          //   newListValue[position].quantity + element.quantity;
+          // listaVendidos = newListValue;
+        }
+        // console.log('esse e o teste', listaVendidos);
       });
+
       if (listaVendidos != undefined) {
         setVendidos(listaVendidos);
-        console.log(vendidos, 'state');
+        // console.log(vendidos, 'state');
       } else console.log('f');
-      // let filtra = teste.filter((e) => e.name == render.name);
-      // if (!filtra.length) {
-      //   // render.map((desgraca2) => {
-      //   // setTeste(...teste, desgraca2);
-      //   setTeste(...teste, render.name);
-      //   // });
-      // }
-      // console.log('dasdas', teste);
-      // setTeste(...teste, desgraca);
     });
   };
 
