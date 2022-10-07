@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 const SalesComponent = () => {
-  const [listProducts, setListProducts] = useState([{}]);
+  const [listProducts, setListProducts] = useState([]);
   const [cont, setCont] = useState([""]);
   const [quantity, setQuantity] = useState(0);
   const [list, setList] = useState([{}]);
@@ -28,7 +28,7 @@ const SalesComponent = () => {
   const handleSale = async (e) => {
     e.preventDefault();
 
-    let jsonList = JSON.stringify(listProducts[1]);
+    let jsonList = JSON.stringify(listProducts);
     // console.log(listProducts);
     // console.log(jsonList);
     let user = localStorage.getItem("IdUser");
@@ -55,12 +55,13 @@ const SalesComponent = () => {
   function addToCart(prod) {
     let verifica = listProducts.filter((element) => element.name == prod.name);
     if (verifica.length === 0) {
+      prod.quantity = 1;
       setListProducts([...listProducts, prod]);
     } else if (verifica.length != 0) {
-      listProducts.map((i) => {
-        if (i.name === prod.name) {
-        }
-      });
+      let position = listProducts.findIndex((index) => index.name == prod.name);
+      let newListProducts = listProducts;
+      newListProducts[position].quantity++;
+      setListProducts([...newListProducts]);
     }
   }
 
