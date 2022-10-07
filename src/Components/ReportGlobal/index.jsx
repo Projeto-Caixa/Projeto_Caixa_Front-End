@@ -76,15 +76,17 @@ const ReportGlobal = () => {
         <S.Products>
           {vendidos
             ? vendidos.map((element, index) => {
-                return (
-                  <div key={index} className="products">
-                    <S.ProductsContainer>
-                      <span>{element.nameabv}</span>
-                      <span>{element.quantity}</span>
-                      <span>{element.price * element.quantity}</span>
-                    </S.ProductsContainer>
-                  </div>
-                );
+                if (element.nameabv) {
+                  return (
+                    <div key={index} className="products">
+                      <S.ProductsContainer>
+                        <span>{element.nameabv}</span>
+                        <span>{element.quantity}</span>
+                        <span>{element.price * element.quantity}</span>
+                      </S.ProductsContainer>
+                    </div>
+                  );
+                }
               })
             : console.log("f")}
         </S.Products>
