@@ -65,35 +65,25 @@ const SalesComponent = () => {
     }
   }
 
-  let g = [
-    {
-      id: "13",
-      name: "Café com leite",
-      product: "Café",
-      description: "Copo de café com leite",
-      price: 4,
-      img: "https://cdn.shopify.com/s/files/1/0835/8563/products/copocomduplaparede.png?v=1661979921",
-      quant: 3,
-    },
-    {
-      id: "13",
-      name: "Café com leite",
-      product: "Café",
-      description: "Copo de café com leite",
-      price: 4,
-      img: "https://cdn.shopify.com/s/files/1/0835/8563/products/copocomduplaparede.png?v=1661979921",
-      quant: 3,
-    },
-    {
-      id: "13",
-      name: "Café com leite",
-      product: "Café",
-      description: "Copo de café com leite",
-      price: 4,
-      img: "https://cdn.shopify.com/s/files/1/0835/8563/products/copocomduplaparede.png?v=1661979921",
-      quant: 3,
-    },
-  ];
+  function RemoveToCart(prod) {
+    let verifica = listProducts.filter((element) => element.name == prod.name);
+    if (verifica.length != 0) {
+      let position = listProducts.findIndex((index) => index.name == prod.name);
+      let newListProducts = listProducts;
+
+      if (newListProducts[position].quantity > 0) {
+        newListProducts[position].quantity--;
+      }
+
+      if (newListProducts[position].quantity === 0) {
+        newListProducts.splice(position, 1);
+
+        setListProducts([...newListProducts]);
+      }
+
+      setListProducts([...newListProducts]);
+    }
+  }
 
   let handleRemoveComp = () => {
     setListProducts([]);
@@ -119,10 +109,18 @@ const SalesComponent = () => {
                   >
                     <GrAdd />
                   </S.ButtonAdd>
-                  <S.ButtonRemove>
+
+                  <S.ButtonRemove
+                    onClick={() => {
+                      RemoveToCart(element);
+                    }}
+                  >
                     <GrFormSubtract />
                   </S.ButtonRemove>
                 </S.LineButtons>
+                <div id="quant">
+                  {element.quantity ? `x${element.quantity}` : ""}
+                </div>
               </S.ProductCard>
             </S.ProductContainer>
           );
@@ -153,7 +151,9 @@ const SalesComponent = () => {
         </S.CloseSale>
       </S.Details>
       <div className="print" id="printable">
-        {g.map((item, index) => {
+        {listProducts.map((item, index) => {
+          let quant = item.quantity;
+          // quant.for((element) => {
           return (
             <div key={index}>
               <S.Break />
@@ -196,6 +196,7 @@ const SalesComponent = () => {
             //     );
             //   }
           ); // }
+          // });
         })}
       </div>
     </S.Container>

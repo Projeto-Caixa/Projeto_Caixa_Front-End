@@ -164,6 +164,10 @@ export const ProductCard = styled.div`
   justify-content: center;
   align-items: center;
   /* border: 1px solid black; */
+  #quant {
+    font-size: 3vh;
+    margin-top: 10px;
+  }
 `;
 
 export const ImageProduct = styled.img`
