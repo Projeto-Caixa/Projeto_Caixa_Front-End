@@ -1,12 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
 
 const Api = axios.create({
-  baseURL: "http://35.247.237.135:3033",
+  baseURL: 'https://projetocaixaback-end-production.up.railway.app/',
 });
 
 Api.interceptors.request.use((config) => {
   try {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
