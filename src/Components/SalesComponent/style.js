@@ -14,22 +14,34 @@ export const Container = styled.main`
   /* min-height: 100vh; */
   width: 98vw;
   display: flex;
+
+
+ 
   
   .print{
     display: none;
     /* height: 30%; */
     width: 100mm;
     /* margin: 0px 20px 20px 20px; */
+   
     .loc{
       margin-top: 40px;
+     
+      
     }
+
+
     .container{
       border-radius: 10px;
       border: 1px solid black;
+      margin-bottom: 50px;
+     
+   
     }
     h1, h2{
       margin: 0;
       text-align: center;
+      
 
     }
 
@@ -38,6 +50,7 @@ export const Container = styled.main`
       flex-direction: column;
       align-items: center;
       border-bottom: 1px solid black;
+      
       img{
         height: 100px;
       }
@@ -57,6 +70,8 @@ export const Container = styled.main`
         margin-top: 10px;
       }
     }
+
+    
   }
 
   @media print {
@@ -64,8 +79,16 @@ export const Container = styled.main`
       visibility: hidden;
     }
     .print {
-      display: block;
+      display:block;       
+    
     }
+
+  
+  
+
+   
+
+
   #printable,
   #printable * {
     visibility: visible;
@@ -267,6 +290,4 @@ export const TitleCart = styled.div`
   margin: 10px;
 `;
 
-export const Break = styled.div`
-  page-break-inside: always;
-`;
+export const Break = styled.div``;
