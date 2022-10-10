@@ -153,6 +153,16 @@ const SalesComponent = () => {
 
       <div className="print" id="printable">
         {listProducts.map((item, index) => {
+          let quant = item.quantity;
+          return (
+            <div className="imprimir" key={index}>
+              <div className="container">
+                <div className="line1">
+                  <img src="https://cdn-icons-png.flaticon.com/512/108/108219.png" />
+                  <h1>{item.name}</h1>
+                </div>
+                <div className="line2">
+                  <h1>R$ 5.00</h1>
           let itens = [];
 
           if (item.quantity > 1) {
