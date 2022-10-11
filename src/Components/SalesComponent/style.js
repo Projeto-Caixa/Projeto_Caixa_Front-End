@@ -25,7 +25,16 @@ export const Container = styled.main`
     }
     .container{
       border-radius: 10px;
-      border: 1px solid black;
+      border: 1px solid black;  
+      
+      @media print {
+        page-break-after: always;
+      }
+     
+                           
+    }
+
+  
     }
     h1, h2{
       margin: 0;
@@ -65,14 +74,16 @@ export const Container = styled.main`
     }
     .print {
       display: block;
+    
     }
+   
   #printable,
   #printable * {
     visibility: visible;
   }
   #printable {
-    position: fixed;
-    left: 15px;
+    /* position: fixed;  */
+     left: 15px; 
     top: 0;
   }
 }
@@ -268,5 +279,5 @@ export const TitleCart = styled.div`
 `;
 
 export const Break = styled.div`
-  page-break-inside: always;
+  page-break-after: always;
 `;

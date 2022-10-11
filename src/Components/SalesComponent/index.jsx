@@ -158,7 +158,8 @@ const SalesComponent = () => {
             for (let index = 1; index <= item.quantity; index++) {
               itens.push(
                 <div key={index}>
-                  <S.Break />
+                  {/* <S.Break /> */}
+
                   <div className="container">
                     <div className="line1">
                       <img src={item.image} alt={item.name} />
@@ -183,7 +184,7 @@ const SalesComponent = () => {
           } else {
             itens.push(
               <div key={index}>
-                <S.Break />
+                {/* <S.Break /> */}
                 <div className="container">
                   <div className="line1">
                     <img src={item.image} alt={item.name} />
@@ -194,7 +195,7 @@ const SalesComponent = () => {
                   </div>
                   <div className="line3">
                     <div>
-                      <h2>05/10</h2>
+                      <h2>07/10</h2>
                       <h2>Imbituva-PR</h2>
                     </div>
                   </div>
