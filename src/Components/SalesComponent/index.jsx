@@ -150,7 +150,6 @@ const SalesComponent = () => {
           <S.RemoveSale onClick={handleSale}>Finalizar Venda</S.RemoveSale>
         </S.CloseSale>
       </S.Details>
-
       <div className="print" id="printable">
         {listProducts.map((item, index) => {
           let itens = [];
