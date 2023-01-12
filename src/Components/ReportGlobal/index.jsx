@@ -5,6 +5,8 @@ import { UserService } from "../../Services/userService";
 import { ProductCard } from "../SalesComponent/style";
 import * as S from "./style";
 
+import teste from "./teste.json";
+
 const ReportGlobal = () => {
   const [listSales, setListSales] = useState();
   const [vendidos, setVendidos] = useState();
@@ -13,8 +15,10 @@ const ReportGlobal = () => {
   const navigate = useNavigate();
 
   const renderLog = async () => {
-    const response = await ReportService.Get();
-    setListSales(response.data);
+    // const response = await ReportService.Get();
+    console.log(teste);
+    // let bla = JSON.parse(teste);
+    setListSales(teste);
     // console.log(listSales);
   };
   const renderUser = async () => {
@@ -101,10 +105,11 @@ const ReportGlobal = () => {
                   return (
                     <div key={index} className="products">
                       <S.ProductsContainer>
-                        <span>{element.nameabv}</span>
-                        <span id="number">{element.quantity}</span>
+                        <span>{/* {element.nameabv} */}l</span>
+                        <span id="number">l{/* {element.quantity} */}</span>
                         <span id="totalPrice">
-                          R${element.price * element.quantity}
+                          R$
+                          {/* {element.price * element.quantity} */}
                         </span>
                       </S.ProductsContainer>
                     </div>

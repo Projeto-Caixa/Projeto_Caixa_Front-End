@@ -153,11 +153,12 @@ const SalesComponent = () => {
       <div className="print" id="printable">
         {listProducts.map((item, index) => {
           let itens = [];
+          console.log("🛺🛺🚙🚙🚐", itens);
 
           if (item.quantity > 1) {
             for (let index = 1; index <= item.quantity; index++) {
               itens.push(
-                <div key={index}>
+                <div className="aqui" key={index}>
                   {/* <S.Break /> */}
 
                   <div className="container">
@@ -181,9 +182,9 @@ const SalesComponent = () => {
                 </div>
               );
             }
-          } else {
+          } else if (item.quantity === 0) {
             itens.push(
-              <div key={index}>
+              <div className="aqui" key={index}>
                 {/* <S.Break /> */}
                 <div className="container">
                   <div className="line1">

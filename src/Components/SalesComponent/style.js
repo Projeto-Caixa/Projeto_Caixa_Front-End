@@ -15,6 +15,8 @@ export const Container = styled.main`
   width: 98vw;
   display: flex;
   
+  
+  
   .print{
     display: none;
     /* height: 30%; */
@@ -27,67 +29,64 @@ export const Container = styled.main`
       border-radius: 10px;
       border: 1px solid black;  
       
-      @media print {
+                        
+    }
+  }
+  h1, h2{
+    margin: 0;
+    text-align: center;
+    
+  }
+  
+  .line1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid black;
+    img{
+      height: 100px;
+    }
+  }
+  .line2{
+    border-bottom: 1px solid black;
+    text-align: center;
+    margin: 10px;
+  }
+  .line3{
+    div{
+      display: flex;
+      justify-content: space-around;
+    }
+    h2{
+      text-align: center;
+      margin-top: 10px;
+    }
+  }
+
+    @media print {
+     .Products, .Infos, .CloseSale{
+       visibility: hidden;
+      }
+      .print {
+        display: block;
+        
+      }
+      .aqui{
+        
         page-break-after: always;
       }
-     
-                           
-    }
-
-  
-    }
-    h1, h2{
-      margin: 0;
-      text-align: center;
-
-    }
-
-    .line1{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border-bottom: 1px solid black;
-      img{
-        height: 100px;
+      
+      #printable,
+      #printable * {
+        visibility: visible;
       }
-    }
-    .line2{
-      border-bottom: 1px solid black;
-      text-align: center;
-      margin: 10px;
-    }
-    .line3{
-      div{
-        display: flex;
-        justify-content: space-around;
-      }
-      h2{
-        text-align: center;
-        margin-top: 10px;
-      }
-    }
-  }
-
-  @media print {
-    .Products, .Infos, .CloseSale{
-      visibility: hidden;
-    }
-    .print {
-      display: block;
-    
-    }
-   
-  #printable,
-  #printable * {
-    visibility: visible;
-  }
-  #printable {
-    /* position: fixed;  */
-     left: 15px; 
-    top: 0;
-  }
-}
-`}
+      /* #printable {
+        position: fixed;  
+        left: 15px;
+        top: 0;
+      }   */
+    } 
+    `}
 `;
 
 export const Products = styled.div`
