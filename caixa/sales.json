@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Pastel",
+    "title": "Pastel",
+    "description": "Pastel de carne",
+    "price": 5,
+    "image": "https://imagensemoldes.com.br/wp-content/uploads/2020/05/Pastel-PNG-de-Carne-1280x720.png",
+    "quantity": 5,
+    "avaliable": true
+  },
+  {
+    "id": 2,
+    "name": "X Santo Antonio",
+    "title": "X-Sto",
+    "description": "Pão con carne no tacho",
+    "price": 12,
+    "image": "https://levesabor.com.br/media/25/sanduiche-carne-de-panela.png",
+    "quantity": 2,
+    "avaliable": true
+  },
+  {
+    "id": 3,
+    "name": "Lata de refrigerante",
+    "title": "Refrigerante",
+    "description": "Lata de refrigerante 300ml",
+    "price": 5,
+    "image": "https://bretas.vtexassets.com/arquivos/ids/161000/63360dd7539bb53eff762ba2.png?v=638000836937600000",
+    "quantity": 4,
+    "avaliable": true
+  }
+]

@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "name": "Pastel",
+    "title": "Pastel",
+    "description": "Pastel de carne",
+    "price": 5,
+    "image": "https://imagensemoldes.com.br/wp-content/uploads/2020/05/Pastel-PNG-de-Carne-1280x720.png",
+    "quantity": 0,
+    "avaliable": true
+  },
+  {
+    "id": 2,
+    "name": "X Santo Antonio",
+    "title": "X-Sto",
+    "description": "Pão con carne no tacho",
+    "price": 12,
+    "image": "https://levesabor.com.br/media/25/sanduiche-carne-de-panela.png",
+    "quantity": 0,
+    "avaliable": true
+  },
+  {
+    "id": 3,
+    "name": "Lata de refrigerante",
+    "title": "Refrigerante",
+    "description": "Lata de refrigerante 300ml",
+    "price": 5,
+    "image": "https://bretas.vtexassets.com/arquivos/ids/161000/63360dd7539bb53eff762ba2.png?v=638000836937600000",
+    "quantity": 0,
+    "avaliable": true
+  },
+  {
+    "id": 4,
+    "name": "Lata de Cerveja",
+    "title": "Cerveja",
+    "description": "Lata de cerveja 300ml",
+    "price": 5,
+    "image": "https://bretas.vtexassets.com/arquivos/ids/159146/63360d0d539bb53eff7623b4.png?v=638000834864200000",
+    "quantity": 0,
+    "avaliable": true
+  },
+  {
+    "id": 5,
+    "name": "Pedaço de bolo",
+    "title": "Bolo",
+    "description": "Um pedaço de bolo",
+    "price": 3,
+    "image": "https://tradicionalbolosetortas.com.br/wp-content/uploads/2014/12/bolo-chocolate-branco-tradicional.png",
+    "quantity": 0,
+    "avaliable": true
+  },
+
+  {
+    "id": 6,
+    "name": "Marmita de Arroz",
+    "title": "Arroz",
+    "description": "Uma marmita de Arroz",
+    "price": 5,
+    "image": "https://octoshop.sfo2.digitaloceanspaces.com/lojas/mawifoods/uploads_produto/porcao-arroz-branco-62ab57c2ebc09.png",
+    "quantity": 0,
+    "avaliable": true
+  },
+  {
+    "id": 7,
+    "name": "Marmita de Farofa",
+    "title": "Farofa",
+    "description": "Uma marmita de Farofa",
+    "price": 5,
+    "image": "https://loja.swift.com.br/arquivos/subcategoria-farofa-variados.png?v=637837311587670000",
+    "quantity": 0,
+    "avaliable": true
+  },
+  {
+    "id": 8,
+    "name": "Peça de Churrasco",
+    "title": "Churrasco",
+    "description": "Uma peça de carne assada",
+    "price": 3,
+    "image": "https://doncordero.com.br/wp-content/uploads/2018/01/carne.png",
+    "quantity": 0,
+    "avaliable": true
+  }
+]
