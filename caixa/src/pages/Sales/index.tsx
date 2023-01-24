@@ -1,14 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./style";
 import products from "../../../products.json";
-import sales from "../../../sales.json";
 import { Product } from "../../types/interfaces";
 import { BsDash } from "react-icons/bs";
 import { BsPlus } from "react-icons/bs";
 import { BsTrash } from "react-icons/bs";
 
 const Sales = () => {
-  console.log(sales);
+  const [sales, setSales] = useState<any>([]);
+
+  let handleAddProduct = (e: any) => {
+    let verifica = sales.filter((element: any) => element.name == e.name);
+    if (verifica.length === 0) {
+      e.quantity = 1;
+      setSales([...sales, e]);
+    } else if (verifica.length != 0) {
+      let position = sales.findIndex((index: any) => index.name == e.name);
+      let newListProducts = sales;
+      newListProducts[position].quantity++;
+      setSales([...newListProducts]);
+    }
+  };
+
+  function handleRemoveProduct(e: any) {
+    let verifica = sales.filter((element: any) => element.name == e.name);
+    if (verifica.length != 0) {
+      let position = sales.findIndex((index: any) => index.name == e.name);
+      let newListProducts = sales;
+
+      if (newListProducts[position].quantity > 0) {
+        newListProducts[position].quantity--;
+      }
+      if (newListProducts[position].quantity === 0) {
+        newListProducts.splice(position, 1);
+        setSales([...newListProducts]);
+      }
+      setSales([...newListProducts]);
+    }
+  }
+
+  let handleTrashSales = () => {
+    setSales([]);
+    window.location.reload();
+  };
+
   return (
     <>
       <S.Page>
@@ -22,11 +57,11 @@ const Sales = () => {
                 <S.InfosProduct>{e.title}</S.InfosProduct>
                 <S.InfosProduct>R${e.price}</S.InfosProduct>
                 <S.LineButtons>
-                  <S.ButtonAdd>
+                  <S.ButtonAdd onClick={() => handleAddProduct(e)}>
                     <BsPlus size={30} />
                   </S.ButtonAdd>
-                  <S.Counter>{e.quantity}</S.Counter>
-                  <S.ButtonRemove>
+                  <S.Counter>{e.quantity ? `x${e.quantity}` : ""}</S.Counter>
+                  <S.ButtonRemove onClick={() => handleRemoveProduct(e)}>
                     <BsDash size={30} />
                   </S.ButtonRemove>
                 </S.LineButtons>
@@ -45,35 +80,45 @@ const Sales = () => {
             <S.Cart>
               <S.CartProductContainer>
                 <S.LineName>
-                  {sales.map((e) => {
-                    return <div>{e.title}</div>;
+                  {sales.map((e: any, index: any) => {
+                    return <div key={index}>{e.title}</div>;
                   })}
                 </S.LineName>
                 <S.LineRs>
-                  {sales.map((e) => {
-                    return <div>{e.price}</div>;
+                  {sales.map((e: any, index: any) => {
+                    return (
+                      <div key={index}>
+                        <span>R$</span>
+                        {e.price}
+                      </div>
+                    );
                   })}
                 </S.LineRs>
                 <S.LineQtde>
-                  {sales.map((e) => {
-                    return <div>{e.quantity}</div>;
+                  {sales.map((e: any, index: any) => {
+                    return <div key={index}>{e.quantity}</div>;
                   })}
                 </S.LineQtde>
                 <S.LineTotal>
-                  {sales.map((e) => {
-                    return <div>{e.quantity * e.price}</div>;
+                  {sales.map((e: any, index: any) => {
+                    return (
+                      <div key={index}>
+                        <span>R$</span>
+                        {e.quantity * e.price}
+                      </div>
+                    );
                   })}
                 </S.LineTotal>
               </S.CartProductContainer>
             </S.Cart>
             <S.ButtonSell>
               <S.CloseSell>Finalizar venda</S.CloseSell>
-              <S.ClearCart>
+              <S.ClearCart onClick={handleTrashSales}>
                 <BsTrash />
               </S.ClearCart>
             </S.ButtonSell>
           </S.CartContent>
-          <S.BeforeSoldContent>ultimas vendas</S.BeforeSoldContent>
+          {/* <S.BeforeSoldContent>ultimas vendas</S.BeforeSoldContent> */}
         </S.ContinerInfoSales>
       </S.Page>
     </>

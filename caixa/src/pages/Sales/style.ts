@@ -142,6 +142,11 @@ export const CartProductContainer = styled.div`
   display: flex;
   justify-content: space-around;
   height: 100%;
+
+  span {
+    font-size: 80%;
+    margin-right: 5px;
+  }
 `;
 
 export const LineName = styled.div`
