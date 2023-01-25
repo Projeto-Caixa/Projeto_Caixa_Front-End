@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./style";
 import products from "../../../products.json";
 import { Product } from "../../types/interfaces";
 import { BsDash } from "react-icons/bs";
 import { BsPlus } from "react-icons/bs";
 import { BsTrash } from "react-icons/bs";
+import { ProductsService } from "../../services/productService";
+import { saleService } from "../../services/saleService";
 
 const Sales = () => {
   const [sales, setSales] = useState<any>([]);
+  const [products, setProducts] = useState<any>([]);
+  const [teste, setTeste] = useState<any>(2);
 
   let handleAddProduct = (e: any) => {
     let verifica = sales.filter((element: any) => element.name == e.name);
@@ -20,6 +24,7 @@ const Sales = () => {
       newListProducts[position].quantity++;
       setSales([...newListProducts]);
     }
+    console.log(sales);
   };
 
   function handleRemoveProduct(e: any) {
@@ -44,11 +49,33 @@ const Sales = () => {
     window.location.reload();
   };
 
+  let handleSaleProducts = async () => {
+    let data = {
+      idVendedor: "Festa de Comunidade",
+      list: sales,
+    };
+
+    const response = await saleService.Post(data);
+    if (response) {
+      window.location.reload();
+      // setSales([]);
+    }
+  };
+
+  const handleGetProducts = async () => {
+    const response = await ProductsService.Get();
+    setProducts(response!.data);
+  };
+
+  useEffect(() => {
+    handleGetProducts();
+  }, []);
+
   return (
     <>
       <S.Page>
-        <S.ContainerListProducts>
-          {products.map((e, index) => {
+        <S.ContainerListProducts id="noPrint">
+          {products.map((e: any, index: any) => {
             return (
               <S.CardProduct key={index}>
                 <figure>
@@ -69,7 +96,7 @@ const Sales = () => {
             );
           })}
         </S.ContainerListProducts>
-        <S.ContinerInfoSales>
+        <S.ContinerInfoSales id="noPrint">
           <S.CartContent>
             <S.TitleCart>
               <S.TitleName>Nome</S.TitleName>
@@ -112,7 +139,9 @@ const Sales = () => {
               </S.CartProductContainer>
             </S.Cart>
             <S.ButtonSell>
-              <S.CloseSell>Finalizar venda</S.CloseSell>
+              <S.CloseSell onClick={handleSaleProducts}>
+                Finalizar venda
+              </S.CloseSell>
               <S.ClearCart onClick={handleTrashSales}>
                 <BsTrash />
               </S.ClearCart>
@@ -120,6 +149,17 @@ const Sales = () => {
           </S.CartContent>
           {/* <S.BeforeSoldContent>ultimas vendas</S.BeforeSoldContent> */}
         </S.ContinerInfoSales>
+        {/* <S.PrintPage id="print">
+          {sales.map((item: any, index: any) => {
+            if (item.quantity > 1) {
+              for (let index = 1; index <= item.quantity; index++) {
+                return <div>{item.name}</div>;
+              }
+            } else if (item.quantity === 0) {
+              return <div>teste{item.name}</div>;
+            }
+          })}
+        </S.PrintPage> */}
       </S.Page>
     </>
   );

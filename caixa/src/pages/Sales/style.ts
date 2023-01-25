@@ -7,6 +7,15 @@ export const Page = styled.div`
   width: 100vw;
 
   display: flex;
+
+  @media print {
+    #noPrint {
+      display: none;
+    }
+    #print {
+      display: block;
+    }
+  }
 `;
 
 export const ContainerListProducts = styled.div`
@@ -189,7 +198,7 @@ export const CloseSell = styled.button`
   font-size: 170%;
   height: 100%;
   width: 50%;
-  background-color: rgb(245, 245, 255);
+  background-color: white;
   border-radius: 50px;
   border: 1px solid green;
   color: green;
@@ -212,7 +221,7 @@ export const ClearCart = styled.button`
   font-size: 170%;
   height: 100%;
   width: 20%;
-  background-color: rgb(245, 245, 255);
+  background-color: white;
   border-radius: 50px;
   border: 1px solid red;
   color: red;
@@ -224,6 +233,20 @@ export const ClearCart = styled.button`
     cursor: pointer;
     background-color: red;
     color: white;
+  }
+`;
+
+export const PrintPage = styled.div`
+  /* display: none; */
+  /* font-size: 200px; */
+  /* height: 100; */
+
+  div {
+    width: 80mm;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 150%;
   }
 `;
 
