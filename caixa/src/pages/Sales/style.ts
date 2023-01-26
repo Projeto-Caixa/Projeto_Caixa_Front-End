@@ -5,11 +5,13 @@ export const Page = styled.div`
   padding: 0;
   height: 100vh;
   width: 100vw;
-
+  /* overflow: hidden; */
+  overflow-x: hidden;
   display: flex;
 
   @media print {
-    #noPrint {
+    #noPrint,
+    #headder {
       display: none;
     }
     #print {
@@ -18,8 +20,11 @@ export const Page = styled.div`
   }
 `;
 
+export const Print = styled.div``;
+
 export const ContainerListProducts = styled.div`
   /* border: 1px solid red; */
+  margin-top: 50px;
   width: 70%;
 
   display: flex;
@@ -108,6 +113,8 @@ export const ButtonRemove = styled.button`
 export const ContinerInfoSales = styled.div`
   width: 30%;
   padding: 5px;
+
+  margin-top: 50px;
 `;
 
 export const CartContent = styled.div`

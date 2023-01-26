@@ -7,6 +7,10 @@ import { BsPlus } from "react-icons/bs";
 import { BsTrash } from "react-icons/bs";
 import { ProductsService } from "../../services/productService";
 import { saleService } from "../../services/saleService";
+import PrintProducts from "../../components/printProduct";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import HeadderCastem from "../../components/Headder";
 
 const Sales = () => {
   const [sales, setSales] = useState<any>([]);
@@ -50,15 +54,29 @@ const Sales = () => {
   };
 
   let handleSaleProducts = async () => {
-    let data = {
-      idVendedor: "Festa de Comunidade",
-      list: sales,
-    };
+    if (sales.length >= 1) {
+      let data = {
+        idVendedor: "Festa de Comunidade",
+        list: sales,
+      };
 
-    const response = await saleService.Post(data);
-    if (response) {
-      window.location.reload();
-      // setSales([]);
+      const response = await saleService.Post(data);
+      if (response) {
+        window.print();
+        window.location.reload();
+        // setSales([]);
+      }
+    } else {
+      toast.error("Nenhum produto foi selecionado!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   };
 
@@ -74,6 +92,7 @@ const Sales = () => {
   return (
     <>
       <S.Page>
+        <HeadderCastem props="sales" />
         <S.ContainerListProducts id="noPrint">
           {products.map((e: any, index: any) => {
             return (
@@ -147,19 +166,22 @@ const Sales = () => {
               </S.ClearCart>
             </S.ButtonSell>
           </S.CartContent>
-          {/* <S.BeforeSoldContent>ultimas vendas</S.BeforeSoldContent> */}
         </S.ContinerInfoSales>
-        {/* <S.PrintPage id="print">
-          {sales.map((item: any, index: any) => {
-            if (item.quantity > 1) {
-              for (let index = 1; index <= item.quantity; index++) {
-                return <div>{item.name}</div>;
-              }
-            } else if (item.quantity === 0) {
-              return <div>teste{item.name}</div>;
-            }
-          })}
-        </S.PrintPage> */}
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover={false}
+          theme="colored"
+        />
+        <S.Print>
+          <PrintProducts id="print" data={sales} />
+        </S.Print>
       </S.Page>
     </>
   );

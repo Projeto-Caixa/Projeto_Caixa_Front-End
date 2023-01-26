@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
 export const PrintCOmponent = styled.div`
+  display: none;
+
   width: 80mm;
   border: 2px solid black;
   border-radius: 10px;
   font-size: 30px;
   text-align: center;
   font-weight: bold;
-
-  page-break-before: always;
+  /* page-break-before: always; */
 `;
 
 export const ProdInfo = styled.div`

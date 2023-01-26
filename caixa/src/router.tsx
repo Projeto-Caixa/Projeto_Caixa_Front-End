@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import PrintProducts from "./components/printProduct";
 import Home from "./pages/Home";
+import Products from "./pages/Products";
 import Sales from "./pages/Sales";
 import { RoutePath } from "./types/routes";
 
@@ -10,6 +11,7 @@ const Router = () => {
       <>
         <Route path={RoutePath.HOMEPAGE} element={<Home />} />
         <Route path={RoutePath.SALES} element={<Sales />} />
+        <Route path={RoutePath.PRODUCTS} element={<Products />} />
 
         <Route path={RoutePath.PRINT} element={<PrintProducts />} />
       </>
