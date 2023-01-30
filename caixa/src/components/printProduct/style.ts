@@ -9,7 +9,8 @@ export const PrintCOmponent = styled.div`
   font-size: 30px;
   text-align: center;
   font-weight: bold;
-  /* page-break-before: always; */
+
+  page-break-after: always;
 `;
 
 export const ProdInfo = styled.div`

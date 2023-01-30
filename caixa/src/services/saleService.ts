@@ -15,4 +15,17 @@ export const saleService = {
       });
     }
   },
+  GetAll: async () => {
+    try {
+      const res = await Api.get("/venda/all");
+      return res;
+    } catch (error: any) {
+      swal({
+        title: "Error",
+        text: `${error.message}`,
+        icon: "error",
+        timer: 6000,
+      });
+    }
+  },
 };

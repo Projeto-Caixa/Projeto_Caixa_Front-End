@@ -54,6 +54,10 @@ export const CardProduct = styled.div`
   img {
     height: 100%;
   }
+
+  #price {
+    font-size: 140%;
+  }
 `;
 
 export const InfosProduct = styled.div`
@@ -157,12 +161,23 @@ export const CartProductContainer = styled.div`
   font-size: 150%;
   display: flex;
   justify-content: space-around;
-  height: 100%;
+  height: 90%;
 
   span {
     font-size: 80%;
     margin-right: 5px;
   }
+`;
+
+export const TotalCart = styled.div`
+  height: 10%;
+  border-top: 1px solid black;
+  margin: 0px 100px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 200%;
 `;
 
 export const LineName = styled.div`
@@ -192,6 +207,69 @@ export const LineTotal = styled.div`
   width: 20%;
   text-align: center;
   margin-top: 10px;
+`;
+
+export const Thing = styled.div`
+  background-color: rgb(245, 245, 255);
+
+  margin-top: 10px;
+  border-radius: 15px;
+
+  padding: 5px;
+  height: 25%;
+
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+`;
+
+export const InputValue = styled.div`
+  height: 60%;
+
+  font-size: 170%;
+  text-align: center;
+
+  input {
+    border: 0;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(245, 245, 255);
+
+    font-family: "Minimal";
+    font-size: 100%;
+    width: 50%;
+    text-align: center;
+  }
+
+  textarea:focus,
+  input:focus,
+  select:focus {
+    box-shadow: 0 0 0 0;
+    border: 0;
+    outline: 0;
+    border: 1px solid black;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+`;
+
+export const OutputValue = styled.div`
+  height: 30%;
+
+  font-size: 200%;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-bottom: 1px solid black;
+  /* border-radius: 50px; */
+  width: 50%;
 `;
 
 export const ButtonSell = styled.div`
@@ -239,6 +317,29 @@ export const ClearCart = styled.button`
   :hover {
     cursor: pointer;
     background-color: red;
+    color: white;
+  }
+`;
+
+export const ButtonThing = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Minimal";
+  font-size: 170%;
+  height: 100%;
+  width: 20%;
+  background-color: white;
+  border-radius: 50px;
+  border: 1px solid #5ad6fc;
+  color: #5ad6fc;
+  margin-top: 5px;
+
+  transition: all 0.3s;
+
+  :hover {
+    cursor: pointer;
+    background-color: #5ad6fc;
     color: white;
   }
 `;

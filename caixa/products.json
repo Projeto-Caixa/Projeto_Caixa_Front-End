@@ -7,7 +7,7 @@
     "description": "Pastel de carne",
     "price": 5,
     "image": "https://imagensemoldes.com.br/wp-content/uploads/2020/05/Pastel-PNG-de-Carne-1280x720.png",
-    "quantity": 0,
+    "quantity": 87,
     "avaliable": true
   },
   {
@@ -18,7 +18,7 @@
     "description": "Pão con carne no tacho",
     "price": 12,
     "image": "https://levesabor.com.br/media/25/sanduiche-carne-de-panela.png",
-    "quantity": 0,
+    "quantity": 46,
     "avaliable": true
   },
   {
@@ -29,7 +29,7 @@
     "description": "Lata de refrigerante 300ml",
     "price": 5,
     "image": "https://bretas.vtexassets.com/arquivos/ids/161000/63360dd7539bb53eff762ba2.png?v=638000836937600000",
-    "quantity": 0,
+    "quantity": 112,
     "avaliable": true
   },
   {
@@ -40,7 +40,7 @@
     "description": "Lata de cerveja 300ml",
     "price": 5,
     "image": "https://bretas.vtexassets.com/arquivos/ids/159146/63360d0d539bb53eff7623b4.png?v=638000834864200000",
-    "quantity": 0,
+    "quantity": 94,
     "avaliable": true
   },
   {
@@ -51,7 +51,7 @@
     "description": "Um pedaço de bolo",
     "price": 3,
     "image": "https://tradicionalbolosetortas.com.br/wp-content/uploads/2014/12/bolo-chocolate-branco-tradicional.png",
-    "quantity": 0,
+    "quantity": 37,
     "avaliable": true
   },
 
@@ -63,7 +63,7 @@
     "description": "Uma marmita de Arroz",
     "price": 5,
     "image": "https://octoshop.sfo2.digitaloceanspaces.com/lojas/mawifoods/uploads_produto/porcao-arroz-branco-62ab57c2ebc09.png",
-    "quantity": 0,
+    "quantity": 118,
     "avaliable": true
   },
   {
@@ -74,7 +74,7 @@
     "description": "Uma marmita de Farofa",
     "price": 5,
     "image": "https://loja.swift.com.br/arquivos/subcategoria-farofa-variados.png?v=637837311587670000",
-    "quantity": 0,
+    "quantity": 120,
     "avaliable": true
   },
   {
@@ -85,7 +85,18 @@
     "description": "Uma peça de carne assada",
     "price": 35,
     "image": "https://doncordero.com.br/wp-content/uploads/2018/01/carne.png",
-    "quantity": 0,
+    "quantity": 232,
+    "avaliable": true
+  },
+  {
+    "id": 9,
+    "name": "Espetinho",
+    "title": "Espetinho",
+    "icon": "https://cdn-icons-png.flaticon.com/512/1867/1867903.png",
+    "description": "Uma peça de carne assada",
+    "price": 5,
+    "image": "https://i.pinimg.com/originals/4f/b7/99/4fb7994136213eb05cc06c3d60d75c44.png",
+    "quantity": 77,
     "avaliable": true
   }
 ]

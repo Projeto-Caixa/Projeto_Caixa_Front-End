@@ -128,7 +128,13 @@ const Products = () => {
                 <S.InfosProduct>{e.title}</S.InfosProduct>
                 <S.InfosProduct>R${e.price}</S.InfosProduct>
                 <S.LineButtons>
-                  <S.ButtonAdd>Editar</S.ButtonAdd>
+                  <S.ButtonAdd
+                    onClick={() =>
+                      toast.error("Esse recurso ainda esta em desenvolvimento.")
+                    }
+                  >
+                    Editar
+                  </S.ButtonAdd>
                   <S.ButtonRemove>
                     <BsTrash
                       onClick={() => handleProductRemove(e.id)}

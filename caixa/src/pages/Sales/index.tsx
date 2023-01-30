@@ -5,6 +5,7 @@ import { Product } from "../../types/interfaces";
 import { BsDash } from "react-icons/bs";
 import { BsPlus } from "react-icons/bs";
 import { BsTrash } from "react-icons/bs";
+import { BsCoin } from "react-icons/bs";
 import { ProductsService } from "../../services/productService";
 import { saleService } from "../../services/saleService";
 import PrintProducts from "../../components/printProduct";
@@ -15,9 +16,15 @@ import HeadderCastem from "../../components/Headder";
 const Sales = () => {
   const [sales, setSales] = useState<any>([]);
   const [products, setProducts] = useState<any>([]);
-  const [teste, setTeste] = useState<any>(2);
+  const [total, setTotal] = useState<any>(0);
+  const [thing, setThing] = useState<any>(0);
+  const [viewThing, setViewThing] = useState<boolean>(false);
+  const [refrash, setRefrash] = useState<any>([]);
+  let input = document.getElementById("thing") as HTMLInputElement;
 
   let handleAddProduct = (e: any) => {
+    setTotal(total + e.price);
+
     let verifica = sales.filter((element: any) => element.name == e.name);
     if (verifica.length === 0) {
       e.quantity = 1;
@@ -28,7 +35,7 @@ const Sales = () => {
       newListProducts[position].quantity++;
       setSales([...newListProducts]);
     }
-    console.log(sales);
+    // console.log(sales);
   };
 
   function handleRemoveProduct(e: any) {
@@ -39,6 +46,7 @@ const Sales = () => {
 
       if (newListProducts[position].quantity > 0) {
         newListProducts[position].quantity--;
+        setTotal(total - e.price);
       }
       if (newListProducts[position].quantity === 0) {
         newListProducts.splice(position, 1);
@@ -49,8 +57,11 @@ const Sales = () => {
   }
 
   let handleTrashSales = () => {
+    input.value = "";
     setSales([]);
-    window.location.reload();
+    setTotal(0);
+    setRefrash([""]);
+    setThing(0);
   };
 
   let handleSaleProducts = async () => {
@@ -63,7 +74,11 @@ const Sales = () => {
       const response = await saleService.Post(data);
       if (response) {
         window.print();
-        window.location.reload();
+        input.value = "";
+        setSales([]);
+        setTotal(0);
+        setRefrash([""]);
+        setThing(0);
         // setSales([]);
       }
     } else {
@@ -80,6 +95,16 @@ const Sales = () => {
     }
   };
 
+  function handleViewThing() {
+    if (viewThing) {
+      setViewThing(false);
+    } else setViewThing(true);
+  }
+
+  const handleGetThing = (e: any) => {
+    setThing(e.target.value - total);
+  };
+
   const handleGetProducts = async () => {
     const response = await ProductsService.Get();
     setProducts(response!.data);
@@ -87,7 +112,7 @@ const Sales = () => {
 
   useEffect(() => {
     handleGetProducts();
-  }, []);
+  }, [refrash]);
 
   return (
     <>
@@ -101,7 +126,7 @@ const Sales = () => {
                   <img src={e.image} />
                 </figure>
                 <S.InfosProduct>{e.title}</S.InfosProduct>
-                <S.InfosProduct>R${e.price}</S.InfosProduct>
+                <S.InfosProduct id="price">R${e.price}</S.InfosProduct>
                 <S.LineButtons>
                   <S.ButtonAdd onClick={() => handleAddProduct(e)}>
                     <BsPlus size={30} />
@@ -156,11 +181,27 @@ const Sales = () => {
                   })}
                 </S.LineTotal>
               </S.CartProductContainer>
+              <S.TotalCart>Total: R$ {total}</S.TotalCart>
             </S.Cart>
+            {viewThing && (
+              <S.Thing>
+                <S.InputValue>
+                  <label>
+                    Valor recebido:
+                    <br />
+                    <input type="number" id="thing" onChange={handleGetThing} />
+                  </label>
+                </S.InputValue>
+                <S.OutputValue>Troco: R${thing}</S.OutputValue>
+              </S.Thing>
+            )}
             <S.ButtonSell>
               <S.CloseSell onClick={handleSaleProducts}>
                 Finalizar venda
               </S.CloseSell>
+              <S.ButtonThing onClick={() => handleViewThing()}>
+                <BsCoin />
+              </S.ButtonThing>
               <S.ClearCart onClick={handleTrashSales}>
                 <BsTrash />
               </S.ClearCart>
