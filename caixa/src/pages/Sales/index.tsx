@@ -74,12 +74,11 @@ const Sales = () => {
       const response = await saleService.Post(data);
       if (response) {
         window.print();
-        input.value = "";
         setSales([]);
         setTotal(0);
         setRefrash([""]);
         setThing(0);
-        // setSales([]);
+        input.value = "";
       }
     } else {
       toast.error("Nenhum produto foi selecionado!", {

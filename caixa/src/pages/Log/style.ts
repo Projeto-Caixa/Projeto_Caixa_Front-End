@@ -103,7 +103,8 @@ export const TotalLine = styled.div`
 
 export const ButtonPrint = styled.div`
   height: 10%;
-  width: 15%;
+  width: 30%;
+  display: flex;
 
   button {
     font-family: "Minimal";

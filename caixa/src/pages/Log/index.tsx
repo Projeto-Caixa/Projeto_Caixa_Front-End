@@ -8,9 +8,9 @@ import swal from "sweetalert";
 
 const Log = () => {
   const [data, setData] = useState<any>();
-  const [teste2, setTeste2] = useState<any>([]);
-
-  let dataFormat: any = [];
+  const [actived, setActived] = useState<any>(false);
+  const [total, setTotal] = useState<any>([]);
+  const [vendidos, setVendidos] = useState<any>();
 
   let teste: any;
 
@@ -26,29 +26,58 @@ const Log = () => {
     } else setData(response.data);
   };
 
-  const handleFormat = () => {
-    // console.log(data);
+  let listaVendidos: any = [];
+  let totalList: any = [];
 
-    if (data) {
-      data.map((e: any) => {
-        if (e.list.length > 1) {
-        } else {
-          if (!dataFormat.length) {
-            teste = e.list;
-            dataFormat.push(...teste);
-            setTeste2(dataFormat);
-          } else {
-            console.log(dataFormat.indexOf(e.name));
+  let handleGetLogFormat = () => {
+    data &&
+      data.map((index: any) => {
+        index.list.map((element: any) => {
+          let filtro = listaVendidos.filter(
+            (e: any) => e.title === element.title
+          );
+          if (!filtro.length) {
+            listaVendidos.push(element);
+          } else if (filtro.length != 0) {
+            let position = listaVendidos.findIndex(
+              (i: any) => i.title === element.title
+            );
+
+            let newListValue = listaVendidos;
+            newListValue[position].quantity =
+              newListValue[position].quantity + element.quantity;
+            listaVendidos.push(newListValue);
           }
-        }
+        });
+
+        if (listaVendidos != undefined) {
+          listaVendidos.map((element: any, index: number) => {
+            if (element.length != undefined) {
+              listaVendidos.splice(index, 1);
+            }
+          });
+          setVendidos(listaVendidos);
+        } else vendidos;
       });
+  };
+
+  const handleActivedLog = () => {
+    if (!actived) {
+      setActived(true);
+      handleGetLogFormat();
     }
   };
-  // console.log("🚃🛴🚋🚋🚃", teste2);
+
+  let convert = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+
+  let totalTeste: any = [];
+  let soma = 0;
 
   useEffect(() => {
     handleGetLog();
-    handleFormat();
   }, []);
 
   return (
@@ -63,25 +92,32 @@ const Log = () => {
             <div id="four">Total</div>
           </S.LineInfo>
           <S.LogContent>
-            {data &&
-              teste2.map((e: any) => {
-                return (
-                  <S.LineProductInfo>
-                    <div id="one">{e.name}</div>
-                    <div id="two">R${e.price}.00</div>
-                    <div id="three">{e.quantity}</div>
-                    <div id="four">R${e.quantity * e.price}.00</div>
-                  </S.LineProductInfo>
-                );
+            {vendidos &&
+              vendidos!.map((e: any) => {
+                if (e.title) {
+                  let soma = e.price * e.quantity;
+                  totalList = +totalList + +soma;
+
+                  let totale = e.quantity * e.price;
+                  return (
+                    <S.LineProductInfo>
+                      <div id="one">{e.name}</div>
+                      <div id="two">{convert.format(e.price)}</div>
+                      <div id="three">{e.quantity}</div>
+                      <div id="four">{convert.format(totale)}</div>
+                    </S.LineProductInfo>
+                  );
+                }
               })}
           </S.LogContent>
-          <S.TotalLine>Total: R$11.438.00</S.TotalLine>
+          <S.TotalLine>Total: {convert.format(totalList)}</S.TotalLine>
         </S.CardLog>
         <S.ButtonPrint>
+          <button onClick={() => handleActivedLog()}>Gerar</button>
           <button onClick={() => window.print()}>Imprimir</button>
         </S.ButtonPrint>
       </S.Container>
-      <PrintLog />
+      <PrintLog data={vendidos} />
     </S.Page>
   );
 };
