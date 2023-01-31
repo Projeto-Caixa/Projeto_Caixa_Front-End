@@ -21,7 +21,7 @@ const Products = () => {
     price: 0,
     image:
       "https://cdlresende.com.br/wp-content/uploads/2018/03/no-image-icon-4.png",
-    quantity: 10000,
+    quantity: 0,
     avaliable: true,
   });
 
@@ -179,20 +179,13 @@ const Products = () => {
                       onChange={() => handleEditData(event, "title")}
                     />
                   </label>
-                  <label>
+                  {/* <label>
                     Icone:
                     <input
                       type="text"
                       onChange={() => handleEditData(event, "icon")}
                     />
-                  </label>
-                  <label>
-                    Descrição:
-                    <input
-                      type="text"
-                      onChange={() => handleEditData(event, "description")}
-                    />
-                  </label>
+                  </label> */}
                 </div>
                 <div id="columm02">
                   <label>
@@ -203,13 +196,20 @@ const Products = () => {
                     />
                   </label>
                   <label>
+                    Descrição:
+                    <input
+                      type="text"
+                      onChange={() => handleEditData(event, "description")}
+                    />
+                  </label>
+                  {/* <label>
                     Imagem:
                     <input
                       type="text"
                       onChange={() => handleEditData(event, "image")}
                     />
-                  </label>
-                  <label>
+                  </label> */}
+                  {/* <label>
                     Quantidade:
                     <input
                       type="number"
@@ -219,7 +219,7 @@ const Products = () => {
                   <label>
                     Em estoque?:
                     <input type="text" />
-                  </label>
+                  </label> */}
                 </div>
               </form>
             </S.FormAddProduct>
