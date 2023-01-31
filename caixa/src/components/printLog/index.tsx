@@ -5,7 +5,7 @@ import swal from "sweetalert";
 import { toast } from "react-toastify";
 
 const PrintLog = () => {
-  return <>ola</>;
+  return <h1>ola</h1>;
 };
 
 export default PrintLog;
