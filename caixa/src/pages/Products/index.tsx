@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from "react";
-import HeadderCastem from "../../components/Headder";
-import { BsTrash } from "react-icons/bs";
-import { BsPencil } from "react-icons/bs";
-import * as S from "./style";
-import { ProductsService } from "../../services/productService";
-import ReactDOM from "react-dom";
-import Modal from "react-modal";
-import { Product } from "../../types/interfaces";
-import swal from "sweetalert";
-import { toast, ToastContainer } from "react-toastify";
-import Swal from "sweetalert2";
+import React, { useEffect, useState } from 'react';
+import HeadderCastem from '../../components/Headder';
+import { BsTrash } from 'react-icons/bs';
+import { BsPencil } from 'react-icons/bs';
+import * as S from './style';
+import { ProductsService } from '../../services/productService';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
+import { Product } from '../../types/interfaces';
+import swal from 'sweetalert';
+import { toast, ToastContainer } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const Products = () => {
   const [products, setProducts] = useState<any>([]);
   const [data, setData] = useState<any>({
-    name: "Nome Produto",
-    title: "Produto",
-    icon: "https://cdlresende.com.br/wp-content/uploads/2018/03/no-image-icon-4.png",
-    description: "",
+    name: 'Nome Produto',
+    title: 'Produto',
+    icon: 'https://cdlresende.com.br/wp-content/uploads/2018/03/no-image-icon-4.png',
+    description: '',
     price: 0,
     image:
-      "https://cdlresende.com.br/wp-content/uploads/2018/03/no-image-icon-4.png",
+      'https://cdlresende.com.br/wp-content/uploads/2018/03/no-image-icon-4.png',
     quantity: 0,
     avaliable: true,
   });
@@ -36,16 +36,16 @@ const Products = () => {
 
   const customStyles = {
     content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      borderRadius: "30px",
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      borderRadius: '30px',
       padding: 0,
       border: 0,
-      boxShadow: "0px 0px 100px #5ad6fc",
+      boxShadow: '0px 0px 100px #5ad6fc',
     },
   };
 
@@ -71,38 +71,38 @@ const Products = () => {
     const response: any = await ProductsService.Add(data);
     if (!response) {
       swal({
-        title: "Erro",
-        text: "Error",
-        icon: "error",
+        title: 'Erro',
+        text: 'Error',
+        icon: 'error',
         timer: 6000,
       });
     } else
-      toast.success("Produto Adicionado com Sucesso!"),
+      toast.success('Produto Adicionado com Sucesso!'),
         closeModal(),
         handleGetProducts();
   };
 
   const handleProductRemove = async (id: any) => {
     Swal.fire({
-      title: "Tem certeza?",
-      text: "Essa ação não pode ser desfeita!",
-      icon: "warning",
+      title: 'Tem certeza?',
+      text: 'Essa ação não pode ser desfeita!',
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Sim, Deletar!",
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim, Deletar!',
     }).then(async (result) => {
       if (result.isConfirmed) {
         const response: any = await ProductsService.Remove(id);
         if (!response) {
           swal({
-            title: "Erro",
-            text: "Error",
-            icon: "error",
+            title: 'Erro',
+            text: 'Error',
+            icon: 'error',
             timer: 6000,
           });
         } else
-          toast.success("Produto Removido com Sucesso!"),
+          toast.success('Produto Removido com Sucesso!'),
             closeModal(),
             handleGetProducts();
       }
@@ -111,7 +111,7 @@ const Products = () => {
 
   return (
     <>
-      <HeadderCastem props={"products"} />
+      <HeadderCastem props={'products'} />
       <S.Page>
         <S.ButtonAddProduct>
           <button onClick={() => openModal()}>Adicionar Produto</button>
@@ -128,7 +128,7 @@ const Products = () => {
                 <S.LineButtons>
                   <S.ButtonAdd
                     onClick={() =>
-                      toast.error("Esse recurso ainda esta em desenvolvimento.")
+                      toast.error('Esse recurso ainda esta em desenvolvimento.')
                     }
                   >
                     Editar
@@ -167,14 +167,14 @@ const Products = () => {
                     Nome:
                     <input
                       type="text"
-                      onChange={() => handleEditData(event, "name")}
+                      onChange={() => handleEditData(event, 'name')}
                     />
                   </label>
                   <label>
                     Titulo:
                     <input
                       type="text"
-                      onChange={() => handleEditData(event, "title")}
+                      onChange={() => handleEditData(event, 'title')}
                     />
                   </label>
                   {/* <label>
@@ -190,23 +190,23 @@ const Products = () => {
                     Preço:
                     <input
                       type="number"
-                      onChange={() => handleEditDataNumber(event, "price")}
+                      onChange={() => handleEditDataNumber(event, 'price')}
                     />
                   </label>
                   <label>
                     Descrição:
                     <input
                       type="text"
-                      onChange={() => handleEditData(event, "description")}
+                      onChange={() => handleEditData(event, 'description')}
                     />
                   </label>
-                  {/* <label>
+                  <label>
                     Imagem:
                     <input
                       type="text"
-                      onChange={() => handleEditData(event, "image")}
+                      onChange={() => handleEditData(event, 'image')}
                     />
-                  </label> */}
+                  </label>
                   {/* <label>
                     Quantidade:
                     <input
