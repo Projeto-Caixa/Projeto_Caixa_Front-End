@@ -56,14 +56,6 @@ const Sales = () => {
     }
   }
 
-  let handleTrashSales = () => {
-    input.value = "";
-    setSales([]);
-    setTotal(0);
-    setRefrash([""]);
-    setThing(0);
-  };
-
   let handleSaleProducts = async () => {
     if (sales.length >= 1) {
       let data = {
@@ -99,6 +91,14 @@ const Sales = () => {
       setViewThing(false);
     } else setViewThing(true);
   }
+
+  let handleTrashSales = () => {
+    setSales([]);
+    setTotal(0);
+    setRefrash([""]);
+    setThing(0);
+    input.value = "";
+  };
 
   const handleGetThing = (e: any) => {
     setThing(e.target.value - total);
@@ -201,7 +201,7 @@ const Sales = () => {
               <S.ButtonThing onClick={() => handleViewThing()}>
                 <BsCoin />
               </S.ButtonThing>
-              <S.ClearCart onClick={handleTrashSales}>
+              <S.ClearCart onClick={() => handleTrashSales()}>
                 <BsTrash />
               </S.ClearCart>
             </S.ButtonSell>

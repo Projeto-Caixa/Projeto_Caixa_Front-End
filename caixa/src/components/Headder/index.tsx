@@ -22,6 +22,12 @@ const HeadderCastem = (props: any) => {
         <button onClick={() => navigate("/")}>Voltar</button> Castem - Relatório
       </S.HeadderComponent>
     );
+  } else if (props.props == "home") {
+    return (
+      <S.HeadderComponentHome id="headder">
+        Castem - Home
+      </S.HeadderComponentHome>
+    );
   }
   return <S.HeadderComponent>Castem</S.HeadderComponent>;
 };

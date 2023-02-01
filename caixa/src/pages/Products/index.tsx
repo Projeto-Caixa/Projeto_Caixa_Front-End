@@ -49,8 +49,6 @@ const Products = () => {
     },
   };
 
-  //   Modal.setAppElement("#modalAddProduct");
-
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
