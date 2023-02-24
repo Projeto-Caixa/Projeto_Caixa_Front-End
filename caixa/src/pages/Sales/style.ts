@@ -14,9 +14,10 @@ export const Page = styled.div`
     #headder {
       display: none;
     }
-    #print {
+    /* #print {
       display: block;
-    }
+      break-after: auto;
+    } */
   }
 `;
 

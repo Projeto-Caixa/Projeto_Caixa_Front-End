@@ -1,7 +1,17 @@
 import styled from "styled-components";
 
+export const Full = styled.div`
+  @media print {
+    #print {
+      display: block;
+    }
+  }
+`;
+
 export const PrintCOmponent = styled.div`
+  /* break-after: auto; */
   display: none;
+  page-break-before: always;
 
   width: 80mm;
   border: 2px solid black;
@@ -9,8 +19,6 @@ export const PrintCOmponent = styled.div`
   font-size: 30px;
   text-align: center;
   font-weight: bold;
-
-  page-break-after: always;
 `;
 
 export const ProdInfo = styled.div`

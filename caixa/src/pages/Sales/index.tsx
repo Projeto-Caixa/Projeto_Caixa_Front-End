@@ -116,7 +116,7 @@ const Sales = () => {
   return (
     <>
       <S.Page>
-        <HeadderCastem props="sales" />
+        <HeadderCastem props="sales" id="noPrint" />
         <S.ContainerListProducts id="noPrint">
           {products.map((e: any, index: any) => {
             return (
@@ -219,10 +219,8 @@ const Sales = () => {
           pauseOnHover={false}
           theme="colored"
         />
-        <S.Print>
-          <PrintProducts id="print" data={sales} />
-        </S.Print>
       </S.Page>
+      <PrintProducts id="print" data={sales} />
     </>
   );
 };
