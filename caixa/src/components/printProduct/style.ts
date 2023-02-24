@@ -1,9 +1,15 @@
 import styled from "styled-components";
 
 export const Full = styled.div`
+  margin: 0;
+  padding: 0;
   @media print {
+    /* #1 {
+      display: none;
+    } */
     #print {
       display: block;
+      margin: 0;
     }
   }
 `;

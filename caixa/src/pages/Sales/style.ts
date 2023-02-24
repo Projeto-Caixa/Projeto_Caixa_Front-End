@@ -12,6 +12,10 @@ export const Page = styled.div`
   @media print {
     #noPrint,
     #headder {
+      margin: 0;
+      padding: 0;
+      height: 0px;
+      width: 0px;
       display: none;
     }
     /* #print {

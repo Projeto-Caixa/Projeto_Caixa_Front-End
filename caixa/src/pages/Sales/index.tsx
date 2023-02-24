@@ -206,19 +206,19 @@ const Sales = () => {
               </S.ClearCart>
             </S.ButtonSell>
           </S.CartContent>
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover={false}
+            theme="colored"
+          />
         </S.ContinerInfoSales>
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover={false}
-          theme="colored"
-        />
       </S.Page>
       <PrintProducts id="print" data={sales} />
     </>
