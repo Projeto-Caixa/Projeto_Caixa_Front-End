@@ -11,6 +11,20 @@ import swal from "sweetalert";
 import { toast, ToastContainer } from "react-toastify";
 import Swal from "sweetalert2";
 
+import absolut from "./../Sales/Icons/absolute.png";
+import agua from "./../Sales/Icons/agua.png";
+import alcatra from "./../Sales/Icons/alcatra.png";
+import brahma from "./../Sales/Icons/brahma.png";
+import energetico from "./../Sales/Icons/energetico.png";
+import espumante from "./../Sales/Icons/espumante.png";
+import frios from "./../Sales/Icons/frios.png";
+import mandioca from "./../Sales/Icons/mandioca.png";
+import padrao from "./../Sales/Icons/padrao.png";
+import refrigerante from "./../Sales/Icons/refrigerante.png";
+import stella from "./../Sales/Icons/stella.png";
+import tanqueray from "./../Sales/Icons/tanqueray.png";
+import jack from "./../Sales/Icons/jack.png";
+
 const Products = () => {
   const [products, setProducts] = useState<any>([]);
   const [data, setData] = useState<any>({
@@ -109,6 +123,49 @@ const Products = () => {
     });
   };
 
+  const handleGetIcon = (name: any) => {
+    switch (name) {
+      case "Absolut":
+        return absolut;
+
+      case "Agua":
+        return agua;
+
+      case "Alcatra":
+        return alcatra;
+
+      case "Brahma":
+        return brahma;
+
+      case "Energetico":
+        return energetico;
+
+      case "Espumante":
+        return espumante;
+
+      case "Frios":
+        return frios;
+
+      case "Jack":
+        return jack;
+
+      case "Mandioca":
+        return mandioca;
+
+      case "Refrigerante":
+        return refrigerante;
+
+      case "Stella":
+        return stella;
+
+      case "Tanqueray":
+        return tanqueray;
+
+      default:
+        return padrao;
+    }
+  };
+
   return (
     <>
       <HeadderCastem props={"products"} />
@@ -121,7 +178,7 @@ const Products = () => {
             return (
               <S.CardProduct key={index}>
                 <figure>
-                  <img src={e.image} />
+                  <img src={handleGetIcon(e.abv)} />
                 </figure>
                 <S.InfosProduct>{e.title}</S.InfosProduct>
                 <S.InfosProduct>R${e.price}</S.InfosProduct>
