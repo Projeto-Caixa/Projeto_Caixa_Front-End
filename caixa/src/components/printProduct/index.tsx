@@ -15,19 +15,23 @@ const PrintProducts = (data: any) => {
                   <S.Full>
                     <S.PrintCOmponent key={index} id={`print`}>
                       <S.ProdInfo>
-                        <div>Festa no Lontrão</div>
+                        <div>Baile do Chopp</div>
                         <div>
-                          <img src={e.icon} />
+                          <img
+                            src={
+                              "https://lh3.google.com/u/0/d/1i4mbBkl2ZEg1AjW4G-RrOlF_-CfrP_02=w1151-h939-iv1"
+                            }
+                          />
                         </div>
                         <div>Vale 1 - {e.name}</div>
                       </S.ProdInfo>
                       <S.ValueProd>R$ {e.price}.00</S.ValueProd>
                       <S.InfoAll>
                         <div>
-                          <span>25/01/2023</span>
+                          <span>15/04/2023</span>
                           <span>Imbituva-Pr</span>
                         </div>
-                        <div>Comunidade do lontrão</div>
+                        <div>Baile do Chopp</div>
                       </S.InfoAll>
                     </S.PrintCOmponent>
                   </S.Full>
@@ -39,19 +43,28 @@ const PrintProducts = (data: any) => {
                   <S.PrintCOmponent id="print">
                     {/* <div id="testePrint"> */}
                     <S.ProdInfo>
-                      <div>Festa no Lontrão</div>
+                      <div>Baile do Chopp</div>
                       <div>
-                        <img src={e.icon} />
+                        <img
+                          src={
+                            "https://lh3.google.com/u/0/d/1i4mbBkl2ZEg1AjW4G-RrOlF_-CfrP_02=w1151-h939-iv1"
+                          }
+                        />
                       </div>
                       <div>Vale 1 - {e.name}</div>
                     </S.ProdInfo>
-                    <S.ValueProd>R$ {e.price}.00</S.ValueProd>
+                    <S.ValueProd>
+                      {e.price.toLocaleString("pt-br", {
+                        style: "currency",
+                        currency: "BRL",
+                      })}
+                    </S.ValueProd>
                     <S.InfoAll>
                       <div>
-                        <span>25/01/2023</span>
+                        <span>15/04/2023</span>
                         <span>Imbituva-Pr</span>
                       </div>
-                      <div>Comunidade do lontrão</div>
+                      <div>Baile do Chopp</div>
                     </S.InfoAll>
                     {/* </div> */}
                   </S.PrintCOmponent>

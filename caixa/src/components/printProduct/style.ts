@@ -31,7 +31,7 @@ export const ProdInfo = styled.div`
   border-bottom: 2px solid black;
 
   img {
-    height: 130px;
+    height: 120px;
   }
 `;
 

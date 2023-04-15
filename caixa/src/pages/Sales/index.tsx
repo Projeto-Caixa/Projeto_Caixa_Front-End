@@ -180,7 +180,7 @@ const Sales = () => {
                   })}
                 </S.LineTotal>
               </S.CartProductContainer>
-              <S.TotalCart>Total: R$ {total}</S.TotalCart>
+              <S.TotalCart>Total: R$ {total.toFixed(2)}</S.TotalCart>
             </S.Cart>
             {viewThing && (
               <S.Thing>
@@ -191,7 +191,7 @@ const Sales = () => {
                     <input type="number" id="thing" onChange={handleGetThing} />
                   </label>
                 </S.InputValue>
-                <S.OutputValue>Troco: R${thing}</S.OutputValue>
+                <S.OutputValue>Troco: R${thing.toFixed(2)}</S.OutputValue>
               </S.Thing>
             )}
             <S.ButtonSell>

@@ -40,7 +40,7 @@ const PrintLog = (props: any) => {
                   let soma = e.price * e.quantity;
                   totalList = +totalList + +soma;
 
-                  return <div key={index}>{e.title}</div>;
+                  return <div key={index}>{e.abv}</div>;
                 }
               })}
             </div>
@@ -70,7 +70,7 @@ const PrintLog = (props: any) => {
       </S.Log>
       <S.Total>Total: R$ {convert.format(totalList)}</S.Total>
       <S.SecundaryInfos>
-        <div>Festa no Lontrão</div>
+        <div>Baile do Chopp</div>
         <div>{today.toLocaleDateString()}</div>
       </S.SecundaryInfos>
     </S.PrintContainer>
