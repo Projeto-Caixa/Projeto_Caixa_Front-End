@@ -13,6 +13,28 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import HeadderCastem from "../../components/Headder";
 
+import absolut from "./Icons/absolute.png";
+import agua from "./Icons/agua.png";
+import alcatra from "./Icons/alcatra.png";
+import brahma from "./Icons/brahma.png";
+import energetico from "./Icons/energetico.png";
+import espumante from "./Icons/espumante.png";
+import frios from "./Icons/frios.png";
+import mandioca from "./Icons/mandioca.png";
+import padrao from "./Icons/padrao.png";
+import refrigerante from "./Icons/refrigerante.png";
+import stella from "./Icons/stella.png";
+import tanqueray from "./Icons/tanqueray.png";
+import jack from "./Icons/jack.png";
+
+// declare module "*.jpg";
+declare module "*.png";
+
+// declare module "*.jpg" {
+//   const path: string;
+//   export default path;
+// }
+
 const Sales = () => {
   const [sales, setSales] = useState<any>([]);
   const [products, setProducts] = useState<any>([]);
@@ -109,6 +131,49 @@ const Sales = () => {
     setProducts(response!.data);
   };
 
+  const handleGetIcon = (name: any) => {
+    switch (name) {
+      case "Absolut":
+        return absolut;
+
+      case "Agua":
+        return agua;
+
+      case "Alcatra":
+        return alcatra;
+
+      case "Brahma":
+        return brahma;
+
+      case "Energetico":
+        return energetico;
+
+      case "Espumante":
+        return espumante;
+
+      case "Frios":
+        return frios;
+
+      case "Jack":
+        return jack;
+
+      case "Mandioca":
+        return mandioca;
+
+      case "Refrigerante":
+        return refrigerante;
+
+      case "Stella":
+        return stella;
+
+      case "Tanqueray":
+        return tanqueray;
+
+      default:
+        return padrao;
+    }
+  };
+
   useEffect(() => {
     handleGetProducts();
   }, [refrash]);
@@ -122,7 +187,7 @@ const Sales = () => {
             return (
               <S.CardProduct key={index}>
                 <figure>
-                  <img src={e.image} />
+                  <img src={handleGetIcon(e.abv)} />
                 </figure>
                 <S.InfosProduct>{e.title}</S.InfosProduct>
                 <S.InfosProduct id="price">R${e.price}</S.InfosProduct>

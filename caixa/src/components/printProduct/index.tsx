@@ -1,6 +1,7 @@
 import React from "react";
 import * as S from "./style";
 import products from "../../../products.json";
+import baile from "./baile.png";
 
 const PrintProducts = (data: any) => {
   // console.log(data.data);
@@ -17,11 +18,7 @@ const PrintProducts = (data: any) => {
                       <S.ProdInfo>
                         <div>Baile do Chopp</div>
                         <div>
-                          <img
-                            src={
-                              "https://lh3.google.com/u/0/d/1i4mbBkl2ZEg1AjW4G-RrOlF_-CfrP_02=w1151-h939-iv1"
-                            }
-                          />
+                          <img src={baile} />
                         </div>
                         <div>Vale 1 - {e.name}</div>
                       </S.ProdInfo>
