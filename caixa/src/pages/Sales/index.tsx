@@ -1,34 +1,34 @@
-import React, { useEffect, useState } from "react";
-import * as S from "./style";
-import products from "../../../products.json";
-import { Product } from "../../types/interfaces";
-import { BsDash } from "react-icons/bs";
-import { BsPlus } from "react-icons/bs";
-import { BsTrash } from "react-icons/bs";
-import { BsCoin } from "react-icons/bs";
-import { ProductsService } from "../../services/productService";
-import { saleService } from "../../services/saleService";
-import PrintProducts from "../../components/printProduct";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import HeadderCastem from "../../components/Headder";
+import React, { useEffect, useState } from 'react';
+import * as S from './style';
+import products from '../../../products.json';
+import { Product } from '../../types/interfaces';
+import { BsDash } from 'react-icons/bs';
+import { BsPlus } from 'react-icons/bs';
+import { BsTrash } from 'react-icons/bs';
+import { BsCoin } from 'react-icons/bs';
+import { ProductsService } from '../../services/productService';
+import { saleService } from '../../services/saleService';
+import PrintProducts from '../../components/printProduct';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import HeadderCastem from '../../components/Headder';
 
-import absolut from "./Icons/absolute.png";
-import agua from "./Icons/agua.png";
-import alcatra from "./Icons/alcatra.png";
-import brahma from "./Icons/brahma.png";
-import energetico from "./Icons/energetico.png";
-import espumante from "./Icons/espumante.png";
-import frios from "./Icons/frios.png";
-import mandioca from "./Icons/mandioca.png";
-import padrao from "./Icons/padrao.png";
-import refrigerante from "./Icons/refrigerante.png";
-import stella from "./Icons/stella.png";
-import tanqueray from "./Icons/tanqueray.png";
-import jack from "./Icons/jack.png";
+import absolut from './Icons/absolute.png';
+import agua from './Icons/agua.png';
+import alcatra from './Icons/alcatra.png';
+import brahma from './Icons/brahma.png';
+import energetico from './Icons/energetico.png';
+import espumante from './Icons/espumante.png';
+import frios from './Icons/frios.png';
+import mandioca from './Icons/mandioca.png';
+import padrao from './Icons/padrao.png';
+import refrigerante from './Icons/refrigerante.png';
+import stella from './Icons/stella.png';
+import tanqueray from './Icons/tanqueray.png';
+import jack from './Icons/jack.png';
 
 // declare module "*.jpg";
-declare module "*.png";
+declare module '*.png';
 
 // declare module "*.jpg" {
 //   const path: string;
@@ -37,12 +37,17 @@ declare module "*.png";
 
 const Sales = () => {
   const [sales, setSales] = useState<any>([]);
+  const [vendedor, setVendedor] = useState<any>('');
   const [products, setProducts] = useState<any>([]);
   const [total, setTotal] = useState<any>(0);
   const [thing, setThing] = useState<any>(0);
   const [viewThing, setViewThing] = useState<boolean>(false);
   const [refrash, setRefrash] = useState<any>([]);
-  let input = document.getElementById("thing") as HTMLInputElement;
+  let input = document.getElementById('thing') as HTMLInputElement;
+
+  useEffect(() => {
+    getVendedor();
+  }, []);
 
   let handleAddProduct = (e: any) => {
     setTotal(total + e.price);
@@ -78,10 +83,14 @@ const Sales = () => {
     }
   }
 
+  const getVendedor = () => {
+    let vendedor = localStorage.getItem('user');
+    setVendedor(vendedor);
+  };
   let handleSaleProducts = async () => {
     if (sales.length >= 1) {
       let data = {
-        idVendedor: "Festa de Comunidade",
+        idVendedor: vendedor,
         list: sales,
       };
 
@@ -90,20 +99,20 @@ const Sales = () => {
         window.print();
         setSales([]);
         setTotal(0);
-        setRefrash([""]);
+        setRefrash(['']);
         setThing(0);
-        input.value = "";
+        input.value = '';
       }
     } else {
-      toast.error("Nenhum produto foi selecionado!", {
-        position: "top-right",
+      toast.error('Nenhum produto foi selecionado!', {
+        position: 'top-right',
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: false,
         draggable: true,
         progress: undefined,
-        theme: "colored",
+        theme: 'colored',
       });
     }
   };
@@ -117,9 +126,9 @@ const Sales = () => {
   let handleTrashSales = () => {
     setSales([]);
     setTotal(0);
-    setRefrash([""]);
+    setRefrash(['']);
     setThing(0);
-    input.value = "";
+    input.value = '';
   };
 
   const handleGetThing = (e: any) => {
@@ -133,40 +142,40 @@ const Sales = () => {
 
   const handleGetIcon = (name: any) => {
     switch (name) {
-      case "Absolut":
+      case 'Absolut':
         return absolut;
 
-      case "Agua":
+      case 'Agua':
         return agua;
 
-      case "Alcatra":
+      case 'Alcatra':
         return alcatra;
 
-      case "Brahma":
+      case 'Brahma':
         return brahma;
 
-      case "Energetico":
+      case 'Energetico':
         return energetico;
 
-      case "Espumante":
+      case 'Espumante':
         return espumante;
 
-      case "Frios":
+      case 'Frios':
         return frios;
 
-      case "Jack":
+      case 'Jack':
         return jack;
 
-      case "Mandioca":
+      case 'Mandioca':
         return mandioca;
 
-      case "Refrigerante":
+      case 'Refrigerante':
         return refrigerante;
 
-      case "Stella":
+      case 'Stella':
         return stella;
 
-      case "Tanqueray":
+      case 'Tanqueray':
         return tanqueray;
 
       default:
@@ -195,7 +204,7 @@ const Sales = () => {
                   <S.ButtonAdd onClick={() => handleAddProduct(e)}>
                     <BsPlus size={30} />
                   </S.ButtonAdd>
-                  <S.Counter>{e.quantity ? `x${e.quantity}` : ""}</S.Counter>
+                  <S.Counter>{e.quantity ? `x${e.quantity}` : ''}</S.Counter>
                   <S.ButtonRemove onClick={() => handleRemoveProduct(e)}>
                     <BsDash size={30} />
                   </S.ButtonRemove>
