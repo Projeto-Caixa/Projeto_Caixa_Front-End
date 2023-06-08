@@ -5,6 +5,7 @@ import Log from "./pages/Log";
 import Products from "./pages/Products";
 import Sales from "./pages/Sales";
 import { RoutePath } from "./types/routes";
+import Login from "./pages/Login";
 
 const Router = () => {
   return (
@@ -14,8 +15,8 @@ const Router = () => {
         <Route path={RoutePath.SALES} element={<Sales />} />
         <Route path={RoutePath.PRODUCTS} element={<Products />} />
         <Route path={RoutePath.LOG} element={<Log />} />
-
         <Route path={RoutePath.PRINT} element={<PrintProducts />} />
+        <Route path={RoutePath.LOGIN} element={<Login />} />
       </>
 
       {/* <Route path="*" element={<Home />} /> */}

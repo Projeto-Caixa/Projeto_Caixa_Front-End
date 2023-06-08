@@ -1,4 +1,4 @@
-import Api from "./api";
+import Api from "./Api";
 import swal from "sweetalert";
 import { Product } from "../types/interfaces";
 

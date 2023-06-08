@@ -9,3 +9,15 @@ export interface Product {
   quantity: number;
   avaliable: boolean;
 }
+
+export interface Person {
+  nome: string;
+  cpf: string;
+  dataNascimento: string;
+  id: string;
+}
+
+export interface Auth {
+  email: string;
+  password: string;
+}

@@ -4,4 +4,5 @@ export enum RoutePath {
   LOG = "/relatorio",
   PRODUCTS = "/produtos",
   PRINT = "/print",
+  LOGIN = "/logar",
 }
