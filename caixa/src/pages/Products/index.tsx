@@ -178,7 +178,7 @@ const Products = () => {
             return (
               <S.CardProduct key={index}>
                 <figure>
-                  <img src={handleGetIcon(e.abv)} />
+                  <img src={e.image} />
                 </figure>
                 <S.InfosProduct>{e.title}</S.InfosProduct>
                 <S.InfosProduct>R${e.price}</S.InfosProduct>
