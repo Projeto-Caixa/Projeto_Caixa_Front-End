@@ -25,13 +25,16 @@ const PersonalLog = () => {
     setmyLog(minhaLog);
     console.log(myLog);
 
-    myLog.forEach((e: any) => {
-      e.list.forEach((i: any) => {
-        console.log(i);
+    let teste: any = [];
 
-        setSeparaLog(() => ({ ...separalog, i }));
+    myLog.map((e: any) => {
+      e.list.map((i: any) => {
+        console.log('💌', i);
+        teste.push(i);
+        // setSeparaLog([{ ...separalog, i }]);
       });
     });
+    setSeparaLog(teste);
   };
 
   const handleGetLog = async () => {
@@ -63,7 +66,7 @@ const PersonalLog = () => {
     }
   };
   ///
-
+  let totalList: any = [];
   return (
     <S.Page>
       <HeadderCastem props="log" />
@@ -75,25 +78,30 @@ const PersonalLog = () => {
             <div id="three">Qtde</div>
             <div id="four">Total</div>
           </S.LineInfo>
-          <S.LogContent>auiiiiiiiiii</S.LogContent>
-          <S.TotalLine>Total: {'total'}</S.TotalLine>
+          <S.LogContent>
+            {separalog &&
+              separalog!.map((e: any) => {
+                if (e.title) {
+                  let soma = e.price * e.quantity;
+                  totalList = +totalList + +soma;
+
+                  let totale = e.quantity * e.price;
+                  return (
+                    <S.LineProductInfo>
+                      <div id="one">{e.name}</div>
+                      <div id="two">{convert.format(e.price)}</div>
+                      <div id="three">{e.quantity}</div>
+                      <div id="four">{convert.format(totale)}</div>
+                    </S.LineProductInfo>
+                  );
+                }
+              })}
+          </S.LogContent>
+          <S.TotalLine>Total: {convert.format(totalList)}</S.TotalLine>
         </S.CardLog>
         <S.ButtonPrint>
-          <button
-            onClick={() => {
-              handleGetMyLog();
-            }}
-          >
-            Gerar
-          </button>
+          <button onClick={() => handleGetMyLog()}>Gerar</button>
           <button onClick={() => window.print()}>Imprimir</button>
-          <button
-            onClick={() => {
-              console.log(separalog);
-            }}
-          >
-            teste
-          </button>
         </S.ButtonPrint>
       </S.Container>
       <PrintLog data={vendidos} />
