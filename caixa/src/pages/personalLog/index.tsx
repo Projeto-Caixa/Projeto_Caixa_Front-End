@@ -25,13 +25,16 @@ const PersonalLog = () => {
     setmyLog(minhaLog);
     console.log(myLog);
 
-    myLog.forEach((e: any) => {
-      e.list.forEach((i: any) => {
-        console.log(i);
+    let teste: any = [];
 
-        setSeparaLog(() => ({ ...separalog, i }));
+    myLog.map((e: any) => {
+      e.list.map((i: any) => {
+        console.log('💌', i);
+        teste.push(i);
+        // setSeparaLog([{ ...separalog, i }]);
       });
     });
+    setSeparaLog(teste);
   };
 
   const handleGetLog = async () => {
@@ -75,7 +78,15 @@ const PersonalLog = () => {
             <div id="three">Qtde</div>
             <div id="four">Total</div>
           </S.LineInfo>
-          <S.LogContent>auiiiiiiiiii</S.LogContent>
+          <S.LogContent>
+            {separalog.map((e: any) => {
+              return (
+                <>
+                  <h1>{e.name}</h1>
+                </>
+              );
+            })}
+          </S.LogContent>
           <S.TotalLine>Total: {'total'}</S.TotalLine>
         </S.CardLog>
         <S.ButtonPrint>
