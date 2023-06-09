@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
-import HeadderCastem from "../../components/Headder";
-import products from "../../../products.json";
-import * as S from "./style";
-import PrintLog from "../../components/printLog";
-import { saleService } from "../../services/saleService";
-import swal from "sweetalert";
+import React, { useEffect, useState } from 'react';
+import HeadderCastem from '../../components/Headder';
+import products from '../../../products.json';
+import * as S from './style';
+import PrintLog from '../../components/printLog';
+import { saleService } from '../../services/saleService';
+import swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Log = () => {
   const [data, setData] = useState<any>();
@@ -18,9 +20,9 @@ const Log = () => {
     const response: any = await saleService.GetAll();
     if (!response) {
       swal({
-        title: "Erro",
-        text: "Error",
-        icon: "error",
+        title: 'Erro',
+        text: 'Error',
+        icon: 'error',
         timer: 6000,
       });
     } else setData(response.data);
@@ -68,9 +70,9 @@ const Log = () => {
     }
   };
 
-  let convert = new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
+  let convert = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
   });
 
   let totalTeste: any = [];
@@ -79,6 +81,22 @@ const Log = () => {
   useEffect(() => {
     handleGetLog();
   }, []);
+
+  /// is logged
+  const navigate = useNavigate();
+  useEffect(() => {
+    isLogged();
+  }, []);
+  let isLogged = () => {
+    let jwt = localStorage.getItem('jwt');
+    if (!jwt) {
+      navigate('/logar');
+      toast('realize login novamente', {
+        icon: '🔄',
+      });
+    }
+  };
+  ///
 
   return (
     <S.Page>

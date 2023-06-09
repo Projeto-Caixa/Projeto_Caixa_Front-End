@@ -1,40 +1,41 @@
-import React, { useEffect, useState } from "react";
-import HeadderCastem from "../../components/Headder";
-import { BsTrash } from "react-icons/bs";
-import { BsPencil } from "react-icons/bs";
-import * as S from "./style";
-import { ProductsService } from "../../services/productService";
-import ReactDOM from "react-dom";
-import Modal from "react-modal";
-import { Product } from "../../types/interfaces";
-import swal from "sweetalert";
-import { toast, ToastContainer } from "react-toastify";
-import Swal from "sweetalert2";
+import React, { useEffect, useState } from 'react';
+import HeadderCastem from '../../components/Headder';
+import { BsTrash } from 'react-icons/bs';
+import { BsPencil } from 'react-icons/bs';
+import * as S from './style';
+import { ProductsService } from '../../services/productService';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
+import { Product } from '../../types/interfaces';
+import swal from 'sweetalert';
+import { toast, ToastContainer } from 'react-toastify';
+import Swal from 'sweetalert2';
 
-import absolut from "./../Sales/Icons/absolute.png";
-import agua from "./../Sales/Icons/agua.png";
-import alcatra from "./../Sales/Icons/alcatra.png";
-import brahma from "./../Sales/Icons/brahma.png";
-import energetico from "./../Sales/Icons/energetico.png";
-import espumante from "./../Sales/Icons/espumante.png";
-import frios from "./../Sales/Icons/frios.png";
-import mandioca from "./../Sales/Icons/mandioca.png";
-import padrao from "./../Sales/Icons/padrao.png";
-import refrigerante from "./../Sales/Icons/refrigerante.png";
-import stella from "./../Sales/Icons/stella.png";
-import tanqueray from "./../Sales/Icons/tanqueray.png";
-import jack from "./../Sales/Icons/jack.png";
+import absolut from './../Sales/Icons/absolute.png';
+import agua from './../Sales/Icons/agua.png';
+import alcatra from './../Sales/Icons/alcatra.png';
+import brahma from './../Sales/Icons/brahma.png';
+import energetico from './../Sales/Icons/energetico.png';
+import espumante from './../Sales/Icons/espumante.png';
+import frios from './../Sales/Icons/frios.png';
+import mandioca from './../Sales/Icons/mandioca.png';
+import padrao from './../Sales/Icons/padrao.png';
+import refrigerante from './../Sales/Icons/refrigerante.png';
+import stella from './../Sales/Icons/stella.png';
+import tanqueray from './../Sales/Icons/tanqueray.png';
+import jack from './../Sales/Icons/jack.png';
+import { useNavigate } from 'react-router-dom';
 
 const Products = () => {
   const [products, setProducts] = useState<any>([]);
   const [data, setData] = useState<any>({
-    name: "Nome Produto",
-    title: "Produto",
-    icon: "https://cdlresende.com.br/wp-content/uploads/2018/03/no-image-icon-4.png",
-    description: "",
+    name: 'Nome Produto',
+    title: 'Produto',
+    icon: 'https://cdlresende.com.br/wp-content/uploads/2018/03/no-image-icon-4.png',
+    description: '',
     price: 0,
     image:
-      "https://cdlresende.com.br/wp-content/uploads/2018/03/no-image-icon-4.png",
+      'https://cdlresende.com.br/wp-content/uploads/2018/03/no-image-icon-4.png',
     quantity: 0,
     avaliable: true,
   });
@@ -50,16 +51,16 @@ const Products = () => {
 
   const customStyles = {
     content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      borderRadius: "30px",
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      borderRadius: '30px',
       padding: 0,
       border: 0,
-      boxShadow: "0px 0px 100px #5ad6fc",
+      boxShadow: '0px 0px 100px #5ad6fc',
     },
   };
 
@@ -85,38 +86,38 @@ const Products = () => {
     const response: any = await ProductsService.Add(data);
     if (!response) {
       swal({
-        title: "Erro",
-        text: "Error",
-        icon: "error",
+        title: 'Erro',
+        text: 'Error',
+        icon: 'error',
         timer: 6000,
       });
     } else
-      toast.success("Produto Adicionado com Sucesso!"),
+      toast.success('Produto Adicionado com Sucesso!'),
         closeModal(),
         handleGetProducts();
   };
 
   const handleProductRemove = async (id: any) => {
     Swal.fire({
-      title: "Tem certeza?",
-      text: "Essa ação não pode ser desfeita!",
-      icon: "warning",
+      title: 'Tem certeza?',
+      text: 'Essa ação não pode ser desfeita!',
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Sim, Deletar!",
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim, Deletar!',
     }).then(async (result) => {
       if (result.isConfirmed) {
         const response: any = await ProductsService.Remove(id);
         if (!response) {
           swal({
-            title: "Erro",
-            text: "Error",
-            icon: "error",
+            title: 'Erro',
+            text: 'Error',
+            icon: 'error',
             timer: 6000,
           });
         } else
-          toast.success("Produto Removido com Sucesso!"),
+          toast.success('Produto Removido com Sucesso!'),
             closeModal(),
             handleGetProducts();
       }
@@ -125,40 +126,40 @@ const Products = () => {
 
   const handleGetIcon = (name: any) => {
     switch (name) {
-      case "Absolut":
+      case 'Absolut':
         return absolut;
 
-      case "Agua":
+      case 'Agua':
         return agua;
 
-      case "Alcatra":
+      case 'Alcatra':
         return alcatra;
 
-      case "Brahma":
+      case 'Brahma':
         return brahma;
 
-      case "Energetico":
+      case 'Energetico':
         return energetico;
 
-      case "Espumante":
+      case 'Espumante':
         return espumante;
 
-      case "Frios":
+      case 'Frios':
         return frios;
 
-      case "Jack":
+      case 'Jack':
         return jack;
 
-      case "Mandioca":
+      case 'Mandioca':
         return mandioca;
 
-      case "Refrigerante":
+      case 'Refrigerante':
         return refrigerante;
 
-      case "Stella":
+      case 'Stella':
         return stella;
 
-      case "Tanqueray":
+      case 'Tanqueray':
         return tanqueray;
 
       default:
@@ -166,9 +167,25 @@ const Products = () => {
     }
   };
 
+  /// is logged
+  const navigate = useNavigate();
+  useEffect(() => {
+    isLogged();
+  }, []);
+  let isLogged = () => {
+    let jwt = localStorage.getItem('jwt');
+    if (!jwt) {
+      navigate('/logar');
+      toast('realize login novamente', {
+        icon: '🔄',
+      });
+    }
+  };
+  ///
+
   return (
     <>
-      <HeadderCastem props={"products"} />
+      <HeadderCastem props={'products'} />
       <S.Page>
         <S.ButtonAddProduct>
           <button onClick={() => openModal()}>Adicionar Produto</button>
@@ -185,7 +202,7 @@ const Products = () => {
                 <S.LineButtons>
                   <S.ButtonAdd
                     onClick={() =>
-                      toast.error("Esse recurso ainda esta em desenvolvimento.")
+                      toast.error('Esse recurso ainda esta em desenvolvimento.')
                     }
                   >
                     Editar
@@ -224,21 +241,21 @@ const Products = () => {
                     Nome:
                     <input
                       type="text"
-                      onChange={() => handleEditData(event, "name")}
+                      onChange={() => handleEditData(event, 'name')}
                     />
                   </label>
                   <label>
                     Nome Card:
                     <input
                       type="text"
-                      onChange={() => handleEditData(event, "title")}
+                      onChange={() => handleEditData(event, 'title')}
                     />
                   </label>
                   <label>
                     Abreviação:
                     <input
                       type="text"
-                      onChange={() => handleEditData(event, "abv")}
+                      onChange={() => handleEditData(event, 'abv')}
                     />
                   </label>
                   {/* <label>
@@ -254,21 +271,21 @@ const Products = () => {
                     Preço:
                     <input
                       type="number"
-                      onChange={() => handleEditDataNumber(event, "price")}
+                      onChange={() => handleEditDataNumber(event, 'price')}
                     />
                   </label>
                   <label>
                     Descrição:
                     <input
                       type="text"
-                      onChange={() => handleEditData(event, "description")}
+                      onChange={() => handleEditData(event, 'description')}
                     />
                   </label>
                   <label>
                     Imagem:
                     <input
                       type="text"
-                      onChange={() => handleEditData(event, "image")}
+                      onChange={() => handleEditData(event, 'image')}
                     />
                   </label>
                   {/* <label>
