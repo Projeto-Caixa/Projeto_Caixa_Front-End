@@ -66,7 +66,7 @@ const PersonalLog = () => {
     }
   };
   ///
-
+  let totalList: any = [];
   return (
     <S.Page>
       <HeadderCastem props="log" />
@@ -79,32 +79,29 @@ const PersonalLog = () => {
             <div id="four">Total</div>
           </S.LineInfo>
           <S.LogContent>
-            {separalog.map((e: any) => {
-              return (
-                <>
-                  <h1>{e.name}</h1>
-                </>
-              );
-            })}
+            {separalog &&
+              separalog!.map((e: any) => {
+                if (e.title) {
+                  let soma = e.price * e.quantity;
+                  totalList = +totalList + +soma;
+
+                  let totale = e.quantity * e.price;
+                  return (
+                    <S.LineProductInfo>
+                      <div id="one">{e.name}</div>
+                      <div id="two">{convert.format(e.price)}</div>
+                      <div id="three">{e.quantity}</div>
+                      <div id="four">{convert.format(totale)}</div>
+                    </S.LineProductInfo>
+                  );
+                }
+              })}
           </S.LogContent>
-          <S.TotalLine>Total: {'total'}</S.TotalLine>
+          <S.TotalLine>Total: {convert.format(totalList)}</S.TotalLine>
         </S.CardLog>
         <S.ButtonPrint>
-          <button
-            onClick={() => {
-              handleGetMyLog();
-            }}
-          >
-            Gerar
-          </button>
+          <button onClick={() => handleGetMyLog()}>Gerar</button>
           <button onClick={() => window.print()}>Imprimir</button>
-          <button
-            onClick={() => {
-              console.log(separalog);
-            }}
-          >
-            teste
-          </button>
         </S.ButtonPrint>
       </S.Container>
       <PrintLog data={vendidos} />
