@@ -175,7 +175,10 @@ const Products = () => {
   let isLogged = () => {
     let jwt = localStorage.getItem('jwt');
     if (!jwt) {
-      navigate('/testando');
+      navigate('/logar');
+      toast('realize login novamente', {
+        icon: '🔄',
+      });
     }
   };
   ///

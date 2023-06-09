@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import HeadderCastem from '../../components/Headder';
 import * as S from './style';
+import { toast } from 'react-toastify';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -15,7 +16,10 @@ const Home = () => {
   let isLogged = () => {
     let jwt = localStorage.getItem('jwt');
     if (!jwt) {
-      navigate('/testando');
+      navigate('/logar');
+      toast('realize login novamente', {
+        icon: '🔄',
+      });
     }
   };
   ///
