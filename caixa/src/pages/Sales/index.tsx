@@ -26,6 +26,7 @@ import refrigerante from './Icons/refrigerante.png';
 import stella from './Icons/stella.png';
 import tanqueray from './Icons/tanqueray.png';
 import jack from './Icons/jack.png';
+import { useNavigate } from 'react-router-dom';
 
 // declare module "*.jpg";
 declare module '*.png';
@@ -45,9 +46,23 @@ const Sales = () => {
   const [refrash, setRefrash] = useState<any>([]);
   let input = document.getElementById('thing') as HTMLInputElement;
 
+  let navigate = useNavigate();
+
   useEffect(() => {
     getVendedor();
   }, []);
+  /// is logged
+
+  useEffect(() => {
+    isLogged();
+  }, []);
+  let isLogged = () => {
+    let jwt = localStorage.getItem('jwt');
+    if (!jwt) {
+      navigate('/testando');
+    }
+  };
+  ///
 
   let handleAddProduct = (e: any) => {
     setTotal(total + e.price);
