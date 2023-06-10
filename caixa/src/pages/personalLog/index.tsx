@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import HeadderCastem from '../../components/Headder';
-import products from '../../../products.json';
-import * as S from './style';
-import PrintLog from '../../components/printLog';
-import { saleService } from '../../services/saleService';
-import swal from 'sweetalert';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import HeadderCastem from "../../components/Headder";
+import products from "../../../products.json";
+import * as S from "./style";
+import PrintLog from "../../components/printLog";
+import { saleService } from "../../services/saleService";
+import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
 
 const PersonalLog = () => {
   const [data, setData] = useState<any>();
@@ -14,44 +14,84 @@ const PersonalLog = () => {
   const [separalog, setSeparaLog] = useState<any>([]);
   const [vendidos, setVendidos] = useState<any>();
 
+  let userName = localStorage.getItem("user");
+
+  let listaVendidos: any = [];
+  let totalList: any = [];
+
+  let handleGetLogFormat = () => {
+    separalog &&
+      separalog.map((index: any) => {
+        index.list.map((element: any) => {
+          let filtro = listaVendidos.filter(
+            (e: any) => e.title === element.title
+          );
+          if (!filtro.length) {
+            listaVendidos.push(element);
+          } else if (filtro.length != 0) {
+            let position = listaVendidos.findIndex(
+              (i: any) => i.title === element.title
+            );
+
+            let newListValue = listaVendidos;
+            newListValue[position].quantity =
+              newListValue[position].quantity + element.quantity;
+            listaVendidos.push(newListValue);
+          }
+        });
+
+        if (listaVendidos != undefined) {
+          listaVendidos.map((element: any, index: number) => {
+            if (element.length != undefined) {
+              listaVendidos.splice(index, 1);
+            }
+          });
+          setVendidos(listaVendidos);
+        } else vendidos;
+      });
+  };
+
   useEffect(() => {
     handleGetLog();
+    console.log("mylog", data);
   }, []);
 
   const handleGetMyLog = () => {
     const minhaLog = data
-      ? data.filter((log: any) => log.idVendedor == 'Honaru Dinyu')
+      ? data.filter((log: any) => log.idVendedor == userName)
       : null;
     setmyLog(minhaLog);
-    console.log(myLog);
+    // console.log(myLog);
 
     let teste: any = [];
 
     myLog.map((e: any) => {
-      e.list.map((i: any) => {
-        console.log('💌', i);
-        teste.push(i);
-        // setSeparaLog([{ ...separalog, i }]);
-      });
+      // teste.push(e);
+      // e.list.map((i: any) => {
+      //   // console.log("💌", i);
+      //   // setSeparaLog([{ ...separalog, i }]);
+      // });
     });
     setSeparaLog(teste);
+
+    handleGetLogFormat();
   };
 
   const handleGetLog = async () => {
     const response: any = await saleService.GetAll();
     if (!response) {
       swal({
-        title: 'Erro',
-        text: 'Error',
-        icon: 'error',
+        title: "Erro",
+        text: "Error",
+        icon: "error",
         timer: 6000,
       });
     } else setData(response.data);
   };
 
-  let convert = new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
+  let convert = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
   });
 
   /// is logged
@@ -60,13 +100,13 @@ const PersonalLog = () => {
     isLogged();
   }, []);
   let isLogged = () => {
-    let jwt = localStorage.getItem('jwt');
+    let jwt = localStorage.getItem("jwt");
     if (!jwt) {
-      navigate('/testando');
+      navigate("/testando");
     }
   };
+  console.log(vendidos);
   ///
-  let totalList: any = [];
   return (
     <S.Page>
       <HeadderCastem props="log" />
@@ -79,8 +119,8 @@ const PersonalLog = () => {
             <div id="four">Total</div>
           </S.LineInfo>
           <S.LogContent>
-            {separalog &&
-              separalog!.map((e: any) => {
+            {vendidos &&
+              vendidos!.map((e: any) => {
                 if (e.title) {
                   let soma = e.price * e.quantity;
                   totalList = +totalList + +soma;
