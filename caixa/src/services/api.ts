@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 const Api = axios.create({
-  baseURL: 'https://projetocaixaback-end-production.up.railway.app',
+  baseURL: "https://projetocaixaback-end-production.up.railway.app",
 });
 
 // Api.interceptors.request.use((config: any) => {

@@ -16,19 +16,23 @@ const PrintProducts = (data: any) => {
                   <S.Full>
                     <S.PrintCOmponent key={index} id={`print`}>
                       <S.ProdInfo>
-                        <div>Baile do Chopp</div>
+                        <div>Barraquinha de santo Antônio</div>
                         <div>
-                          <img src={baile} />
+                          <img
+                            src={
+                              "https://www.adf.org.br/home/wp-content/uploads/2020/06/santo-antonio.png"
+                            }
+                          />
                         </div>
                         <div>Vale 1 - {e.name}</div>
                       </S.ProdInfo>
                       <S.ValueProd>R$ {e.price}.00</S.ValueProd>
                       <S.InfoAll>
                         <div>
-                          <span>15/04/2023</span>
+                          <span>09/06/2023</span>
                           <span>Imbituva-Pr</span>
                         </div>
-                        <div>Baile do Chopp</div>
+                        <div>Barraquinha de santo Antônio</div>
                       </S.InfoAll>
                     </S.PrintCOmponent>
                   </S.Full>
@@ -40,11 +44,11 @@ const PrintProducts = (data: any) => {
                   <S.PrintCOmponent id="print">
                     {/* <div id="testePrint"> */}
                     <S.ProdInfo>
-                      <div>Baile do Chopp</div>
+                      <div>Barraquinha de santo Antônio</div>
                       <div>
                         <img
                           src={
-                            "https://lh3.google.com/u/0/d/1i4mbBkl2ZEg1AjW4G-RrOlF_-CfrP_02=w1151-h939-iv1"
+                            "https://www.adf.org.br/home/wp-content/uploads/2020/06/santo-antonio.png"
                           }
                         />
                       </div>
@@ -58,10 +62,10 @@ const PrintProducts = (data: any) => {
                     </S.ValueProd>
                     <S.InfoAll>
                       <div>
-                        <span>15/04/2023</span>
+                        <span>09/06/2023</span>
                         <span>Imbituva-Pr</span>
                       </div>
-                      <div>Baile do Chopp</div>
+                      <div>Barraquinha de santo Antônio</div>
                     </S.InfoAll>
                     {/* </div> */}
                   </S.PrintCOmponent>
