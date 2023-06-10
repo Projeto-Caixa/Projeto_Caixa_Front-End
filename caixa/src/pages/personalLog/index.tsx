@@ -13,6 +13,7 @@ const PersonalLog = () => {
   const [total, setTotal] = useState<any>([]);
   const [separalog, setSeparaLog] = useState<any>([]);
   const [vendidos, setVendidos] = useState<any>();
+  const [actived, setActived] = useState<any>(false);
 
   let userName = localStorage.getItem("user");
 
@@ -53,10 +54,16 @@ const PersonalLog = () => {
 
   useEffect(() => {
     handleGetLog();
-    console.log("mylog", data);
+    setTimeout(() => {
+      // console.log("mylog", data);
+    }, 5000);
   }, []);
 
   const handleGetMyLog = () => {
+    // if (!actived) {
+    // console.log("foi");
+    setActived(true);
+
     const minhaLog = data
       ? data.filter((log: any) => log.idVendedor == userName)
       : null;
@@ -66,15 +73,16 @@ const PersonalLog = () => {
     let teste: any = [];
 
     myLog.map((e: any) => {
-      // teste.push(e);
-      // e.list.map((i: any) => {
-      //   // console.log("💌", i);
-      //   // setSeparaLog([{ ...separalog, i }]);
-      // });
+      e.list.map((i: any) => {
+        teste.push(e);
+        // console.log("💌", i);
+        // setSeparaLog([{ ...separalog, i }]);
+      });
     });
     setSeparaLog(teste);
 
     handleGetLogFormat();
+    // }
   };
 
   const handleGetLog = async () => {
@@ -105,7 +113,7 @@ const PersonalLog = () => {
       navigate("/testando");
     }
   };
-  console.log(vendidos);
+  console.log(separalog);
   ///
   return (
     <S.Page>

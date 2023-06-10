@@ -29,7 +29,7 @@ const PrintProducts = (data: any) => {
                       <S.ValueProd>R$ {e.price}.00</S.ValueProd>
                       <S.InfoAll>
                         <div>
-                          <span>09/06/2023</span>
+                          <span>10/06/2023</span>
                           <span>Imbituva-Pr</span>
                         </div>
                         <div>Barraquinha de santo Antônio</div>

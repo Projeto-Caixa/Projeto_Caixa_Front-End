@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as S from "./style";
 import products from "../../../products.json";
 import { Product } from "../../types/interfaces";
@@ -12,6 +12,8 @@ import PrintProducts from "../../components/printProduct";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import HeadderCastem from "../../components/Headder";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 import absolut from "./Icons/absolute.png";
 import agua from "./Icons/agua.png";
@@ -105,7 +107,13 @@ const Sales = () => {
     let vendedor = localStorage.getItem("user");
     setVendedor(vendedor);
   };
+  const spinId: any = useRef();
+  const closedId: any = useRef();
+
   let handleSaleProducts = async () => {
+    spinId.current.style.display = "flex";
+    closedId.current.style.display = "none";
+
     if (sales.length >= 1) {
       let data = {
         idVendedor: vendedor,
@@ -114,6 +122,8 @@ const Sales = () => {
 
       const response = await saleService.Post(data);
       if (response) {
+        spinId.current.style.display = "none";
+        closedId.current.style.display = "block";
         window.print();
         setSales([]);
         setTotal(0);
@@ -132,6 +142,8 @@ const Sales = () => {
         progress: undefined,
         theme: "colored",
       });
+      spinId.current.style.display = "none";
+      closedId.current.style.display = "block";
     }
   };
 
@@ -156,49 +168,6 @@ const Sales = () => {
   const handleGetProducts = async () => {
     const response = await ProductsService.Get();
     setProducts(response!.data);
-  };
-
-  const handleGetIcon = (name: any) => {
-    switch (name) {
-      case "Absolut":
-        return absolut;
-
-      case "Agua":
-        return agua;
-
-      case "Alcatra":
-        return alcatra;
-
-      case "Brahma":
-        return brahma;
-
-      case "Energetico":
-        return energetico;
-
-      case "Espumante":
-        return espumante;
-
-      case "Frios":
-        return frios;
-
-      case "Jack":
-        return jack;
-
-      case "Mandioca":
-        return mandioca;
-
-      case "Refrigerante":
-        return refrigerante;
-
-      case "Stella":
-        return stella;
-
-      case "Tanqueray":
-        return tanqueray;
-
-      default:
-        return padrao;
-    }
   };
 
   useEffect(() => {
@@ -264,7 +233,7 @@ const Sales = () => {
                 <S.LineTotal>
                   {sales.map((e: any, index: any) => {
                     return (
-                      <div key={index}>
+                      <div ref={spinId}>
                         <span>R$</span>
                         {e.quantity * e.price}
                       </div>
@@ -287,9 +256,12 @@ const Sales = () => {
               </S.Thing>
             )}
             <S.ButtonSell>
-              <S.CloseSell onClick={handleSaleProducts}>
+              <S.CloseSell ref={closedId} onClick={handleSaleProducts}>
                 Finalizar venda
               </S.CloseSell>
+              <S.Spin ref={spinId}>
+                <CircularProgress />
+              </S.Spin>
               <S.ButtonThing onClick={() => handleViewThing()}>
                 <BsCoin />
               </S.ButtonThing>

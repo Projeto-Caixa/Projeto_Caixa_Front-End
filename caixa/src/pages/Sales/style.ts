@@ -364,3 +364,7 @@ export const PrintPage = styled.div`
 `;
 
 export const BeforeSoldContent = styled.div``;
+
+export const Spin = styled.div`
+  display: none;
+`;
