@@ -1,8 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./style";
-
+import { BiLogOut } from "react-icons/bi";
 const HeadderCastem = (props: any) => {
+  let handleLogOut = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
+
   const navigate = useNavigate();
   if (props.props == "products") {
     return (
@@ -26,6 +31,9 @@ const HeadderCastem = (props: any) => {
     return (
       <S.HeadderComponentHome id="headder">
         Castem - Home
+        <span>
+          <BiLogOut onClick={() => handleLogOut()} />
+        </span>
       </S.HeadderComponentHome>
     );
   }

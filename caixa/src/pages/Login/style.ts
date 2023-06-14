@@ -60,7 +60,7 @@ export const LoginContent = styled.div`
 
   p {
     font-size: 2.5rem;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
     text-align: center;
   }
 

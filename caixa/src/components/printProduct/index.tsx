@@ -16,7 +16,7 @@ const PrintProducts = (data: any) => {
                   <S.Full>
                     <S.PrintCOmponent key={index} id={`print`}>
                       <S.ProdInfo>
-                        <div>Barraquinha de santo Antônio</div>
+                        <div>Festa de santo Antônio</div>
                         <div>
                           <img
                             src={
@@ -29,10 +29,10 @@ const PrintProducts = (data: any) => {
                       <S.ValueProd>R$ {e.price}.00</S.ValueProd>
                       <S.InfoAll>
                         <div>
-                          <span>10/06/2023</span>
+                          <span>11/06/2023</span>
                           <span>Imbituva-Pr</span>
                         </div>
-                        <div>Barraquinha de santo Antônio</div>
+                        <div>Festa de santo Antônio</div>
                       </S.InfoAll>
                     </S.PrintCOmponent>
                   </S.Full>
@@ -44,7 +44,7 @@ const PrintProducts = (data: any) => {
                   <S.PrintCOmponent id="print">
                     {/* <div id="testePrint"> */}
                     <S.ProdInfo>
-                      <div>Barraquinha de santo Antônio</div>
+                      <div>Festa de santo Antônio</div>
                       <div>
                         <img
                           src={
@@ -62,10 +62,10 @@ const PrintProducts = (data: any) => {
                     </S.ValueProd>
                     <S.InfoAll>
                       <div>
-                        <span>09/06/2023</span>
+                        <span>11/06/2023</span>
                         <span>Imbituva-Pr</span>
                       </div>
-                      <div>Barraquinha de santo Antônio</div>
+                      <div>Festa de santo Antônio</div>
                     </S.InfoAll>
                     {/* </div> */}
                   </S.PrintCOmponent>

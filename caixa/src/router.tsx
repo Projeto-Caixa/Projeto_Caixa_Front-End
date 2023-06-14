@@ -1,12 +1,13 @@
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
-import PrintProducts from './components/printProduct';
-import Home from './pages/Home';
-import Log from './pages/Log';
-import Products from './pages/Products';
-import Sales from './pages/Sales';
-import { RoutePath } from './types/routes';
-import Login from './pages/Login';
-import PersonalLog from './pages/personalLog';
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import PrintProducts from "./components/printProduct";
+import Home from "./pages/Home";
+import Log from "./pages/Log";
+import Products from "./pages/Products";
+import Sales from "./pages/Sales";
+import { RoutePath } from "./types/routes";
+import Login from "./pages/Login";
+import PersonalLog from "./pages/personalLog";
+import PersonalLogFixed from "./pages/personalLogFixed";
 
 const Router = () => {
   return (
@@ -18,10 +19,10 @@ const Router = () => {
         <Route path={RoutePath.LOG} element={<Log />} />
         <Route path={RoutePath.PRINT} element={<PrintProducts />} />
         <Route path={RoutePath.LOGIN} element={<Login />} />
-        <Route path={RoutePath.PERSONALLOG} element={<PersonalLog />} />
+        <Route path={RoutePath.PERSONALLOG} element={<PersonalLogFixed />} />
       </>
 
-      {/* <Route path="*" element={<Home />} /> */}
+      <Route path="*" element={<Home />} />
       {/* recurso acima para direcionar url fora de padrão */}
     </Routes>
   );

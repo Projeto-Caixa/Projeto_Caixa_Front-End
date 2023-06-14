@@ -6,37 +6,51 @@ import PrintLog from "../../components/printLog";
 import { saleService } from "../../services/saleService";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import dayFesta from "./diaFesta.json";
+import day1 from "./dia1.json";
 
-const Log = () => {
-  const [data, setData] = useState<any>();
-  const [actived, setActived] = useState<any>(false);
+const PersonalLogFixed = () => {
+  const [data, setData] = useState<any>(day1);
+  const [myLog, setmyLog] = useState<any>([]);
   const [total, setTotal] = useState<any>([]);
-  const [vendidos, setVendidos] = useState<any>();
+  const [separalog, setSeparaLog] = useState<any>([]);
+  const [vendidos, setVendidos] = useState<any>([]);
+  const [actived, setActived] = useState<any>(false);
+  const [exibi, setExibi] = useState<any>(false);
 
-  let teste: any;
+  const [totalVendas, setTotalVendas] = useState<any>([]);
 
-  const handleGetLog = async () => {
-    // const response: any = await saleService.GetAll();
-    // if (!response) {
-    //   swal({
-    //     title: "Erro",
-    //     text: "Error",
-    //     icon: "error",
-    //     timer: 6000,
-    //   });
-    // } else
-    setData(dayFesta);
-  };
+  let userName = localStorage.getItem("user");
 
   let listaVendidos: any = [];
   let totalList: any = [];
 
+  const handleGetMyLog = () => {
+    if (!actived) {
+      // setActived(true);
+
+      const minhaLog = data
+        ? data.filter((log: any) => log.idVendedor == userName)
+        : null;
+      setmyLog(minhaLog);
+
+      let teste: any = [];
+
+      myLog.map((e: any) => {
+        e.list.map((i: any) => {
+          teste.push(e);
+        });
+      });
+      setSeparaLog(teste);
+      console.log("🚚", separalog);
+
+      handleGetLogFormat();
+    }
+  };
+
   let handleGetLogFormat = () => {
-    console.log(data);
-    data &&
-      data.map((index: any) => {
+    let variavel: any = [];
+    separalog &&
+      separalog.map((index: any) => {
         index.list.map((element: any) => {
           let filtro = listaVendidos.filter(
             (e: any) => e.title === element.title
@@ -61,16 +75,17 @@ const Log = () => {
               listaVendidos.splice(index, 1);
             }
           });
-          setVendidos(listaVendidos);
+
+          variavel.push(listaVendidos);
+          // setVendidos(listaVendidos);
+          console.log("LISTA", listaVendidos);
+          setTotalVendas([listaVendidos]);
+
+          setExibi(true);
         } else vendidos;
       });
-  };
 
-  const handleActivedLog = () => {
-    if (!actived) {
-      setActived(true);
-      handleGetLogFormat();
-    }
+    setVendidos(variavel);
   };
 
   let convert = new Intl.NumberFormat("pt-BR", {
@@ -78,28 +93,19 @@ const Log = () => {
     currency: "BRL",
   });
 
-  let totalTeste: any = [];
-  let soma = 0;
-
-  useEffect(() => {
-    handleGetLog();
-  }, []);
-
-  /// is logged
   const navigate = useNavigate();
-  useEffect(() => {
-    isLogged();
-  }, []);
   let isLogged = () => {
     let jwt = localStorage.getItem("jwt");
     if (!jwt) {
       navigate("/logar");
-      toast("realize login novamente", {
-        icon: "🔄",
-      });
     }
   };
-  ///
+  // console.log(separalog);
+
+  useEffect(() => {
+    isLogged();
+    handleGetMyLog();
+  }, []);
 
   return (
     <S.Page>
@@ -113,28 +119,29 @@ const Log = () => {
             <div id="four">Total</div>
           </S.LineInfo>
           <S.LogContent>
-            {vendidos &&
-              vendidos!.map((e: any) => {
-                if (e.title) {
-                  let soma = e.price * e.quantity;
-                  totalList = +totalList + +soma;
+            {exibi
+              ? vendidos[0]!.map((e: any) => {
+                  if (e.title) {
+                    let soma = e.price * e.quantity;
+                    totalList = +totalList + +soma;
 
-                  let totale = e.quantity * e.price;
-                  return (
-                    <S.LineProductInfo>
-                      <div id="one">{e.name}</div>
-                      <div id="two">{convert.format(e.price)}</div>
-                      <div id="three">{e.quantity}</div>
-                      <div id="four">{convert.format(totale)}</div>
-                    </S.LineProductInfo>
-                  );
-                }
-              })}
+                    let totale = e.quantity * e.price;
+                    return (
+                      <S.LineProductInfo>
+                        <div id="one">{e.name}</div>
+                        <div id="two">{convert.format(e.price)}</div>
+                        <div id="three">{e.quantity}</div>
+                        <div id="four">{convert.format(totale)}</div>
+                      </S.LineProductInfo>
+                    );
+                  }
+                })
+              : ""}
           </S.LogContent>
           <S.TotalLine>Total: {convert.format(totalList)}</S.TotalLine>
         </S.CardLog>
         <S.ButtonPrint>
-          <button onClick={() => handleActivedLog()}>Gerar</button>
+          <button onClick={() => handleGetMyLog()}>Gerar</button>
           <button onClick={() => window.print()}>Imprimir</button>
         </S.ButtonPrint>
       </S.Container>
@@ -143,4 +150,4 @@ const Log = () => {
   );
 };
 
-export default Log;
+export default PersonalLogFixed;

@@ -77,6 +77,14 @@ export const HeadderComponentHome = styled.header`
   align-items: center;
   font-size: 250%;
 
+  span {
+    position: absolute;
+    right: 28%;
+
+    :hover {
+      cursor: pointer;
+    }
+  }
   button {
     position: absolute;
     left: 10px;

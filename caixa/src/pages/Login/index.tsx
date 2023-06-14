@@ -67,7 +67,7 @@ const Login = () => {
             <figure>
               <img
                 className="animate__animated animate__fadeIn"
-                src="https://lh3.googleusercontent.com/_NXkQFWC-Y4barof7tmwBU6ATx8MRqe2fXnQ-Ptx08PYuUfsqQOh97Df-ilwZjsTPcpCvUq7p8rbXhjW9dtxew8dzj8gKN8tdtOdGcSkfIKn3ytXzcSf1j9gGg_S8COWmpMedhL6dW2ocIrU4pE-9tJek_SAk4ld2iiGuzR1WM8Q_5ND2IIiE8PbYoC5HgGSc6Yu8RuH69CFLmInxAUfNmreLuiuCPMPZyRSkgJikozjG5HLnJMBtymzrGq1Zp4qjZIdut8GkOWPIuff3oOHHQNdYqItgPBVHbLZSIRv14g5HtbUE8UZ10ztDyNpbNVUDTXjNWtUCuOHgGU-TN7Gf-T4e-0iy8JC7CqaXxuUY8M8JUFfnQNtvrGvjQ5P7BSwXgCz2i-Ocd62xoeqb5npew05zUKMUvoOvgF66qzMXdTckArDOs1kWSJNXko4UJ5hCmiwsgAD_D6hohoXMgHTYjdBfTlVYjWX0SUhNJ_ryYdH3latLSr1JQbu9PcKrXzNgMPIgTJoTj_OJQF9RUU_IO2NuN74BbgE1Xi0CdnoMp0TVx7C1oSu3UulEAXuhhRUltqnWFxl-GYg70m104iPIF0MZevPFPaRBk-fns79lA7A2CpCgKT9gVQAbWkCdB6ePRuKSX7ntDXblxz-9PRW9ZElRb3RUqRA1_XkMlGzS8MIsNct4ozkdmFVD6Xz4h-1C91x-TCuOTd-hq9bmjTleamrEF4Tc0wwkvhYNDXIG_4928RStK6XHg0FxKC6nNBnkekYMZifW0QHJeuJPpSXSH10UrSeoc_k86Ed--OKK8T99drcMd4mEtgu8Os3uznpI8Vftol9zervm_hnFi_aHYIgYsaLZYhrJWNblRKwx9mJWhXWa-U_U4cZBVUHsrAvYu40rDf7igczbWrTxZQNhdxzp1dld8JQ9x0UmVzdFzB5h3Md_mnldTAJrvnvW263Njn425NnYgcPLJjKUuKAXzZClS6qMEn2nxdYNBfTdKtcjlNqqXLz_6hfaHI-EqIYbSnOom1GKRtsnhyEGahXOrKtqvlSWSodqVufrk2wpVNk0m88EWFYwHx0PXJj588=w487-h201-s-no?authuser=1"
+                src="https://jacaimages.vercel.app/imgs/logos/castem.png"
               />
             </figure>
           </S.InfoCompany>
