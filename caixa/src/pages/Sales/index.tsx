@@ -170,6 +170,49 @@ const Sales = () => {
     setProducts(response!.data);
   };
 
+  const handleGetIcon = (name: any) => {
+    switch (name) {
+      case "Absolut":
+        return absolut;
+
+      case "Agua":
+        return agua;
+
+      case "Alcatra":
+        return alcatra;
+
+      case "Brahma":
+        return brahma;
+
+      case "Energetico":
+        return energetico;
+
+      case "Espumante":
+        return espumante;
+
+      case "Frios":
+        return frios;
+
+      case "Jack":
+        return jack;
+
+      case "Mandioca":
+        return mandioca;
+
+      case "Refrigerante":
+        return refrigerante;
+
+      case "Stella":
+        return stella;
+
+      case "Tanqueray":
+        return tanqueray;
+
+      default:
+        return padrao;
+    }
+  };
+
   useEffect(() => {
     handleGetProducts();
   }, [refrash]);
@@ -183,7 +226,7 @@ const Sales = () => {
             return (
               <S.CardProduct key={index}>
                 <figure>
-                  <img src={e.image} />
+                  <img src={handleGetIcon(e.image)} />
                 </figure>
                 <S.InfosProduct>{e.title}</S.InfosProduct>
                 <S.InfosProduct id="price">R${e.price}</S.InfosProduct>

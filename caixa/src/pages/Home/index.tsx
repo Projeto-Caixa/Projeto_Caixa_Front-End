@@ -11,7 +11,7 @@ const Home = () => {
   /// is logged
 
   useEffect(() => {
-    isLogged();
+    // isLogged();
   }, []);
   let isLogged = () => {
     let jwt = localStorage.getItem("jwt");
@@ -31,9 +31,9 @@ const Home = () => {
         <button id="sale" onClick={() => navigate("/vender")}>
           vender
         </button>
-        <button id="sale" onClick={() => navigate("/personal-log")}>
+        {/* <button id="sale" onClick={() => navigate("/personal-log")}>
           pessoal
-        </button>
+        </button> */}
         <button id="products" onClick={() => navigate("/produtos")}>
           produtos
         </button>
