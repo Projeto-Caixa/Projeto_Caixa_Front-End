@@ -11,7 +11,7 @@ const Home = () => {
   /// is logged
 
   useEffect(() => {
-    // isLogged();
+    isLogged();
   }, []);
   let isLogged = () => {
     let jwt = localStorage.getItem("jwt");
