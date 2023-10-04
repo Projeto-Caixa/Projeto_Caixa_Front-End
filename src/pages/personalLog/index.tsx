@@ -1,29 +1,52 @@
-import React, { useEffect, useState } from "react";
-import HeadderCastem from "../../components/Headder";
-import products from "../../../products.json";
-import * as S from "./style";
-import PrintLog from "../../components/printLog";
-import { saleService } from "../../services/saleService";
-import swal from "sweetalert";
-import { useNavigate } from "react-router-dom";
-// import day1 from "./dia1.json";
+import React, { useEffect, useState } from 'react';
+import HeadderCastem from '../../components/Headder';
+import products from '../../../products.json';
+import * as S from './style';
+import PrintLog from '../../components/printLog';
+import { saleService } from '../../services/saleService';
+import swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
 
-const PersonalLog = () => {
+import { ToastContainer, toast } from 'react-toastify';
+const LogPessoal = () => {
   const [data, setData] = useState<any>();
-  const [myLog, setmyLog] = useState<any>([]);
-  const [total, setTotal] = useState<any>([]);
-  const [separalog, setSeparaLog] = useState<any>([]);
-  const [vendidos, setVendidos] = useState<any>();
   const [actived, setActived] = useState<any>(false);
+  const [total, setTotal] = useState<any>([]);
+  const [vendidos, setVendidos] = useState<any>();
 
-  let userName = localStorage.getItem("user");
+  let teste: any;
 
+  let user: string | null = localStorage.getItem('user');
+
+  const handleGetLog = async () => {
+    const response: any = await saleService.GetAll();
+    if (!response) {
+      swal({
+        title: 'Erro',
+        text: 'Error',
+        icon: 'error',
+        timer: 6000,
+      });
+    } else setData(response.data);
+  };
+  const handleGetByUser = async () => {
+    const response = await saleService.GetAllByUser(user);
+    if (!response) {
+      swal({
+        title: 'Erro',
+        text: 'Error',
+        icon: 'error',
+        timer: 6000,
+      });
+    } else setData(response.data);
+  };
   let listaVendidos: any = [];
   let totalList: any = [];
 
   let handleGetLogFormat = () => {
-    separalog &&
-      separalog.map((index: any) => {
+    console.log(data);
+    data &&
+      data.map((index: any) => {
         index.list.map((element: any) => {
           let filtro = listaVendidos.filter(
             (e: any) => e.title === element.title
@@ -53,47 +76,32 @@ const PersonalLog = () => {
       });
   };
 
-  useEffect(() => {
-    handleGetLog();
-    setTimeout(() => {
-      // console.log("mylog", data);
-    }, 5000);
-  }, []);
-
-  const handleGetMyLog = () => {
-    // if (!actived) {
-    // console.log("foi");
-    setActived(true);
-
-    const minhaLog = data
-      ? data.filter((log: any) => log.idVendedor == userName)
-      : null;
-    setmyLog(minhaLog);
-    // console.log(myLog);
-
-    let teste: any = [];
-
-    myLog.map((e: any) => {
-      e.list.map((i: any) => {
-        teste.push(e);
-        // console.log("💌", i);
-        // setSeparaLog([{ ...separalog, i }]);
-      });
-    });
-    setSeparaLog(teste);
-
-    handleGetLogFormat();
-    // }
+  const handleActivedLog = () => {
+    if (!actived) {
+      // setActived(true);
+      handleGetLogFormat();
+      handleGetByUser();
+    }
   };
 
-  const handleGetLog = async () => {
-    // setData(day1);
-  };
-
-  let convert = new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
+  let convert = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
   });
+
+  let totalTeste: any = [];
+  let soma = 0;
+
+  useEffect(() => {
+    //handleGetLog();
+    handleGetByUser();
+
+    toast.promise(handleGetByUser(), {
+      pending: 'Carregando vendas',
+      success: 'Vendas carregados 👌',
+      error: 'Erro ao carregar vendas 🤯',
+    });
+  }, []);
 
   /// is logged
   const navigate = useNavigate();
@@ -101,16 +109,20 @@ const PersonalLog = () => {
     isLogged();
   }, []);
   let isLogged = () => {
-    let jwt = localStorage.getItem("jwt");
+    let jwt = localStorage.getItem('jwt');
     if (!jwt) {
-      navigate("/testando");
+      navigate('/logar');
+      toast('realize login novamente', {
+        icon: '🔄',
+      });
     }
   };
-  console.log(separalog);
   ///
+
   return (
     <S.Page>
-      <HeadderCastem props="log" />
+      <ToastContainer />
+      <HeadderCastem props="logPerson" />
       <S.Container id="noPrint">
         <S.CardLog>
           <S.LineInfo>
@@ -141,7 +153,7 @@ const PersonalLog = () => {
           <S.TotalLine>Total: {convert.format(totalList)}</S.TotalLine>
         </S.CardLog>
         <S.ButtonPrint>
-          <button onClick={() => handleGetMyLog()}>Gerar</button>
+          <button onClick={() => handleActivedLog()}>Gerar</button>
           <button onClick={() => window.print()}>Imprimir</button>
         </S.ButtonPrint>
       </S.Container>
@@ -150,4 +162,4 @@ const PersonalLog = () => {
   );
 };
 
-export default PersonalLog;
+export default LogPessoal;
