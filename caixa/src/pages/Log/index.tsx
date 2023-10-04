@@ -18,16 +18,15 @@ const Log = () => {
   let teste: any;
 
   const handleGetLog = async () => {
-    // const response: any = await saleService.GetAll();
-    // if (!response) {
-    //   swal({
-    //     title: "Erro",
-    //     text: "Error",
-    //     icon: "error",
-    //     timer: 6000,
-    //   });
-    // } else
-    setData(dayFesta);
+    const response: any = await saleService.GetAll();
+    if (!response) {
+      swal({
+        title: "Erro",
+        text: "Error",
+        icon: "error",
+        timer: 6000,
+      });
+    } else setData(response.data);
   };
 
   let listaVendidos: any = [];

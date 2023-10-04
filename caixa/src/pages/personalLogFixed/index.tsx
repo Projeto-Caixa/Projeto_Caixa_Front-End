@@ -103,7 +103,7 @@ const PersonalLogFixed = () => {
   // console.log(separalog);
 
   useEffect(() => {
-    isLogged();
+    // isLogged();
     handleGetMyLog();
   }, []);
 
