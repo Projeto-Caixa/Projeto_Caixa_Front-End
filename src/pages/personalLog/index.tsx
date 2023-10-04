@@ -94,7 +94,7 @@ const LogPessoal = () => {
 
   useEffect(() => {
     //handleGetLog();
-    handleGetByUser();
+    // handleGetByUser();
 
     toast.promise(handleGetByUser(), {
       pending: 'Carregando vendas',
