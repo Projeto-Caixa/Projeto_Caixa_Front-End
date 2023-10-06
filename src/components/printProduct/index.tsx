@@ -2,8 +2,17 @@ import React from "react";
 import * as S from "./style";
 import products from "../../../products.json";
 import baile from "./baile.png";
+import icon from "./icon.png";
 
 const PrintProducts = (data: any) => {
+  let data2 = new Date();
+  let dia = String(data2.getDate()).padStart(2, "0");
+  let mes = String(data2.getMonth() + 1).padStart(2, "0");
+  let ano = data2.getFullYear();
+  let dataAtual = dia + "/" + mes + "/" + ano;
+
+  const timeElapsed = Date.now();
+  const today = new Date(timeElapsed);
   // console.log(data.data);
   return (
     <>
@@ -16,23 +25,20 @@ const PrintProducts = (data: any) => {
                   <S.Full>
                     <S.PrintCOmponent key={index} id={`print`}>
                       <S.ProdInfo>
-                        <div>Festa de santo Antônio</div>
+                        <div>Festa de Nossa Senhora Aparecida</div>
+                        <br />
                         <div>
-                          <img
-                            src={
-                              "https://www.adf.org.br/home/wp-content/uploads/2020/06/santo-antonio.png"
-                            }
-                          />
+                          <img src={icon} />
                         </div>
                         <div>Vale 1 - {e.name}</div>
                       </S.ProdInfo>
                       <S.ValueProd>R$ {e.price}.00</S.ValueProd>
                       <S.InfoAll>
                         <div>
-                          <span>11/06/2023</span>
+                          <span>{today.toLocaleDateString()}</span>
                           <span>Imbituva-Pr</span>
                         </div>
-                        <div>Festa de santo Antônio</div>
+                        {/* <div>Festa de Nossa Senhora Aparecida</div> */}
                       </S.InfoAll>
                     </S.PrintCOmponent>
                   </S.Full>
@@ -44,13 +50,10 @@ const PrintProducts = (data: any) => {
                   <S.PrintCOmponent id="print">
                     {/* <div id="testePrint"> */}
                     <S.ProdInfo>
-                      <div>Festa de santo Antônio</div>
+                      <div>Festa de Nossa Senhora Aparecida</div>
+                      <br />
                       <div>
-                        <img
-                          src={
-                            "https://www.adf.org.br/home/wp-content/uploads/2020/06/santo-antonio.png"
-                          }
-                        />
+                        <img src={icon} />
                       </div>
                       <div>Vale 1 - {e.name}</div>
                     </S.ProdInfo>
@@ -62,10 +65,10 @@ const PrintProducts = (data: any) => {
                     </S.ValueProd>
                     <S.InfoAll>
                       <div>
-                        <span>11/06/2023</span>
+                        <span>{today.toLocaleDateString()}</span>
                         <span>Imbituva-Pr</span>
                       </div>
-                      <div>Festa de santo Antônio</div>
+                      {/* <div>Festa de Nossa Senhora Aparecida</div> */}
                     </S.InfoAll>
                     {/* </div> */}
                   </S.PrintCOmponent>

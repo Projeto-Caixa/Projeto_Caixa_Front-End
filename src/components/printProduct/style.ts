@@ -42,7 +42,7 @@ export const ValueProd = styled.div`
 
 export const InfoAll = styled.div`
   font-size: 25px;
-  height: 80px;
+  height: 50px;
   margin-top: 30px;
   /* display: flex;
   flex-direction: column;
