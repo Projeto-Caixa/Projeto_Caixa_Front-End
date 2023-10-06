@@ -2,7 +2,8 @@ import axios from "axios";
 
 const Api = axios.create({
   // baseURL: "https://projetocaixaback-end-production.up.railway.app",
-  baseURL: "http://localhost:3333",
+  baseURL:
+    "https://castem-api.up.railway.app/api/#/User/UserController_findAll",
 });
 
 // Api.interceptors.request.use((config: any) => {
