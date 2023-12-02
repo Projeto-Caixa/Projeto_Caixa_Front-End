@@ -18,7 +18,7 @@ export const AuthService = {
         //   text: `${error.response.data.message}`,
         //   icon: "error",
         //   timer: 6000,
-        // });
+        // })
       } else
         swal({
           title: "Error",
