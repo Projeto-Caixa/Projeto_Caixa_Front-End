@@ -52,9 +52,9 @@ const Home = () => {
         ) : (
           ""
         )}
-        <button id="log" onClick={() => navigate("/relatorio/byId")}>
+        {/* <button id="log" onClick={() => navigate("/relatorio/byId")}>
           relatorioPessoal
-        </button>
+        </button> */}
       </S.ButtonsLine>
     </S.Page>
   );
