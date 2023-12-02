@@ -25,7 +25,7 @@ const PrintProducts = (data: any) => {
                   <S.Full>
                     <S.PrintCOmponent key={index} id={`print`}>
                       <S.ProdInfo>
-                        <div>Festa de Nossa Senhora Aparecida</div>
+                        <div>Baile</div>
                         <br />
                         <div>
                           <img src={icon} />
@@ -38,7 +38,7 @@ const PrintProducts = (data: any) => {
                           <span>{today.toLocaleDateString()}</span>
                           <span>Imbituva-Pr</span>
                         </div>
-                        {/* <div>Festa de Nossa Senhora Aparecida</div> */}
+                        {/* <div>Baile</div> */}
                       </S.InfoAll>
                     </S.PrintCOmponent>
                   </S.Full>
@@ -50,7 +50,7 @@ const PrintProducts = (data: any) => {
                   <S.PrintCOmponent id="print">
                     {/* <div id="testePrint"> */}
                     <S.ProdInfo>
-                      <div>Festa de Nossa Senhora Aparecida</div>
+                      <div>Baile</div>
                       <br />
                       <div>
                         <img src={icon} />
@@ -68,7 +68,7 @@ const PrintProducts = (data: any) => {
                         <span>{today.toLocaleDateString()}</span>
                         <span>Imbituva-Pr</span>
                       </div>
-                      {/* <div>Festa de Nossa Senhora Aparecida</div> */}
+                      {/* <div>Baile</div> */}
                     </S.InfoAll>
                     {/* </div> */}
                   </S.PrintCOmponent>

@@ -70,7 +70,7 @@ const PrintLog = (props: any) => {
       </S.Log>
       <S.Total>Total: R$ {convert.format(totalList)}</S.Total>
       <S.SecundaryInfos>
-        <div>Festa de Nossa Senhora Aparecida</div>
+        <div>Baile</div>
         <div>{today.toLocaleDateString()}</div>
       </S.SecundaryInfos>
     </S.PrintContainer>
