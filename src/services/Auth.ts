@@ -1,6 +1,6 @@
 import swal from "sweetalert";
 import { Auth } from "../types/interfaces";
-import Api from "./Api";
+import Api from "./api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
