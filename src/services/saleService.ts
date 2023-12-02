@@ -1,4 +1,4 @@
-import Api from "./Api";
+import Api from "./api";
 import swal from "sweetalert";
 
 export const saleService = {
