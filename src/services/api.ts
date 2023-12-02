@@ -9,7 +9,7 @@ const Api = axios.create({
 //     return config;
 //   } catch (error: any) {
 //     console.error(error);
-//   }
+//
 // });
 
 export default Api;
