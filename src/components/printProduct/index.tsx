@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./style";
 import products from "../../../products.json";
-// import Jantar Pe Luis Carlos  from "./Jantar Pe Luis Carlos .png";
+// import Almoço Pe Luis Carlos  from "./Almoço Pe Luis Carlos .png";
 
 const PrintProducts = (data: any) => {
   let data2 = new Date();
@@ -24,7 +24,7 @@ const PrintProducts = (data: any) => {
                   <S.Full>
                     <S.PrintCOmponent key={index} id={`print`}>
                       <S.ProdInfo>
-                        <div>Jantar Pe Luis Carlos </div>
+                        <div>Almoço Pe Luis Carlos </div>
                         <br />
                         <div>
                           <img
@@ -41,7 +41,7 @@ const PrintProducts = (data: any) => {
                           <span>{today.toLocaleDateString()}</span>
                           <span>Imbituva-Pr</span>
                         </div>
-                        {/* <div>Jantar Pe Luis Carlos </div> */}
+                        {/* <div>Almoço Pe Luis Carlos </div> */}
                       </S.InfoAll>
                     </S.PrintCOmponent>
                   </S.Full>
@@ -53,7 +53,7 @@ const PrintProducts = (data: any) => {
                   <S.PrintCOmponent id="print">
                     {/* <div id="testePrint"> */}
                     <S.ProdInfo>
-                      <div>Jantar Pe Luis Carlos </div>
+                      <div>Almoço Pe Luis Carlos </div>
                       <br />
                       <div>
                         <img
@@ -75,7 +75,7 @@ const PrintProducts = (data: any) => {
                         <span>{today.toLocaleDateString()}</span>
                         <span>Imbituva-Pr</span>
                       </div>
-                      {/* <div>Jantar Pe Luis Carlos </div> */}
+                      {/* <div>Almoço Pe Luis Carlos </div> */}
                     </S.InfoAll>
                     {/* </div> */}
                   </S.PrintCOmponent>
