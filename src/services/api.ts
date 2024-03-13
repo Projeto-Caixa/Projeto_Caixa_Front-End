@@ -2,7 +2,7 @@ import axios from "axios";
 
 const Api = axios.create({
   // baseURL: "https://projetocaixaback-end-production.up.railway.app",
-  baseURL: "castemapi.up.railway.app",
+  baseURL: "https://castemapi.up.railway.app/",
 });
 
 // Api.interceptors.request.use((config: any) => {
