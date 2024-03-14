@@ -103,8 +103,8 @@ const Login = () => {
                 </span> */}
               </form>
             </S.ContentLogin>
-            <a href="https://www.contabilidadesilemar.com.br">
-              Visite Nosso Site
+            <a href="https://www.mediafire.com/file/0mhm5i2vngs7mvv/Driver_Pos-80c.exe/file">
+              Baixe agora o Driver!
             </a>
           </S.LoginContent>
           <ToastContainer />
