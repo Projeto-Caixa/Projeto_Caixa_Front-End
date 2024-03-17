@@ -29,7 +29,7 @@ const PrintProducts = (data: any) => {
                         <div>
                           <img
                             src={
-                              "https://lh3.googleusercontent.com/proxy/pn55gXGYKilOKBlGpavTtRW-3RITAS_27jOdfW9PnzfpjG2j-ajDDnxRBT5h4XCRBfBHKRK5qtA9dtOEvjX56QnpK0ZeE84opYNysmIb2TMTrR0ruBVQCe2zJQ"
+                              "https://lh3.googleusercontent.com/proxy/X8-ZMyVWMRqdEPvmLPT6UfERKJ6slx-ZjgEoAWNa5ardaeu93m7Dyvgy10dR6fptNuVl3ioCkMy22zetJinpgqVX-8y-wtiFN_wkKdNA7KOrDn6LDz_POQM1mA"
                             }
                           />
                         </div>
@@ -58,7 +58,7 @@ const PrintProducts = (data: any) => {
                       <div>
                         <img
                           src={
-                            "https://lh3.googleusercontent.com/proxy/pn55gXGYKilOKBlGpavTtRW-3RITAS_27jOdfW9PnzfpjG2j-ajDDnxRBT5h4XCRBfBHKRK5qtA9dtOEvjX56QnpK0ZeE84opYNysmIb2TMTrR0ruBVQCe2zJQ"
+                            "https://lh3.googleusercontent.com/proxy/X8-ZMyVWMRqdEPvmLPT6UfERKJ6slx-ZjgEoAWNa5ardaeu93m7Dyvgy10dR6fptNuVl3ioCkMy22zetJinpgqVX-8y-wtiFN_wkKdNA7KOrDn6LDz_POQM1mA"
                           }
                         />
                       </div>
